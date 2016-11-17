@@ -7,6 +7,7 @@ use DMTF::WSMan;
 use SOAP::Lite;
 use Data::Dumper;
 use XML::Parser;
+use Tools;
 
 
 my $user = $ARGV[0];
@@ -44,7 +45,7 @@ $xml = $wsman->enumerate(
 open O, ">" . 'response.xml';
 print O $xml;
 
-my $xmls = extractXmlFromResponse($xml);
+my $xmls = Tools::extractXmlFromResponse($xml);
 $xml = $xmls->[0];
 
 open O2, ">" . 'debug.log';
@@ -63,20 +64,4 @@ my $obj = $deserial->deserialize($xml);
 my $dd = Data::Dumper->new([$obj]);
 print $dd->Dump;
 
-sub extractXmlFromResponse {
-    my ($response) = @_;
 
-    my $xmls = [];
-    my @split = split /</, $response;
-    my $xml = '';
-    my $line;
-    while ($line = shift @split) {
-	$xml .= $line;
-	if ($line =~ /\/s:Envelope>/) {
-	    push @$xmls, $xml;
-	    $xml = '';
-	}
-    }
-
-    return $xmls;
-}
