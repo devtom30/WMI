@@ -15,7 +15,7 @@ my $pwd = $ARGV[1];
 
 
 my $p = Net::Ping->new();
-print "$computer is alive.\n" if $p->ping($host);
+print "$computer is alive.\n" if $p->ping($computer);
 $p->close();
 
 my $locatorObj = Win32::OLE->new("WbemScripting.SWbemLocator") or die "ERROR CREATING OBJ";
