@@ -42,7 +42,7 @@ sub createWSManConnection {
 sub retrieveURI {
     my ($wsmanConnection, $uri) = @_;
 
-    my $res = $wsmanConnection->get(
+    my $res = $wsmanConnection->enumerate(
         epr=>{
             ResourceURI=>$uri
         }

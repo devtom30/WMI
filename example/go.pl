@@ -25,18 +25,18 @@ my $wsman = Tools::createWSManConnection(
 # my $uri = "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_Service";
 my $uri = "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_Service";
 my $xml = Tools::retrieveURI($wsman, $uri);
-print $xml;
-print "\n";
-print "\n";
-print "\n";
-
-$xml = $wsman->enumerate(
-    epr=>{
-	ResourceURI=>$uri
-    },
-    filter => '*'
-);
-# print $xml;
+#print $xml;
+#print "\n";
+#print "\n";
+#print "\n";
+#
+#$xml = $wsman->enumerate(
+#    epr=>{
+#	ResourceURI=>$uri
+#    },
+#    filter => '*'
+#);
+## print $xml;
 open O, ">" . 'response.xml';
 print O $xml;
 
