@@ -55,4 +55,15 @@ sub getWin32ComputerSystem {
     return $cs;
 }
 
+sub getWin32OperatingSystem {
+    my ($wsmanConnection) = @_;
+
+    my $uri = 'http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_OperatingSystem';
+    my $obj = Tools::getEnumerateResponseObjectForURI($wsmanConnection, $uri);
+
+    my $cs = Tools::extractDataFromItemsInSoapDataObj($obj, 'Win32_OperatingSystem');
+
+    return $cs;
+}
+
 1;

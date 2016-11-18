@@ -38,5 +38,10 @@ ok ($cs);
 $dd = Data::Dumper->new([$cs]);
 print $dd->Dump;
 
+my $os = WSMan::getWin32OperatingSystem($wsman);
+ok ($os);
+$dd = Data::Dumper->new([$os]);
+print $dd->Dump;
+
 done_testing();
 
