@@ -44,4 +44,15 @@ sub getWin32Processor {
     return $procs;
 }
 
+sub getWin32ComputerSystem {
+    my ($wsmanConnection) = @_;
+
+    my $uri = 'http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_ComputerSystem';
+    my $obj = Tools::getEnumerateResponseObjectForURI($wsmanConnection, $uri);
+
+    my $cs = Tools::extractDataFromItemsInSoapDataObj($obj, 'Win32_ComputerSystem');
+
+    return $cs;
+}
+
 1;

@@ -33,5 +33,10 @@ ok ($procs);
 $dd = Data::Dumper->new([$procs]);
 print $dd->Dump;
 
+my $cs = WSMan::getWin32ComputerSystem($wsman);
+ok ($cs);
+$dd = Data::Dumper->new([$cs]);
+print $dd->Dump;
+
 done_testing();
 
