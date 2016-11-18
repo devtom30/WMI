@@ -27,7 +27,7 @@ my $wsman = DMTF::WSMan->new(
 my $uri = "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_Service";
 my $xml = $wsman->get( 
     epr=>{
-	ResourceURI=>$uri
+        ResourceURI=>$uri
     }
 );
 print $xml;
@@ -63,5 +63,30 @@ my $deserial = SOAP::Deserializer->new;
 my $obj = $deserial->deserialize($xml);
 my $dd = Data::Dumper->new([$obj]);
 print $dd->Dump;
+print 'ref : ' . ref $obj;
+print "\n";
+
+my $body = $obj->body;
+$dd = Data::Dumper->new([$body]);
+print $dd->Dump;
+print 'ref : ' . ref $body;
+print "\n";
+
+my $enumerateResponse = $obj->dataof('//EnumerateResponse');
+$dd = Data::Dumper->new([$enumerateResponse]);
+print $dd->Dump;
+print 'ref : ' . ref $enumerateResponse;
+print "\n";
+
+my @items = $obj->dataof('//EnumerateResponse/Items/Item');
+for my $item (@items) {
+    print 'item';
+    $dd = Data::Dumper->new([$item]);
+    print $dd->Dump;
+    print 'ref item : ' . ref $item;
+    print "\n";
+}
+
+
 
 

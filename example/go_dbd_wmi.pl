@@ -13,7 +13,7 @@ my $dbh = DBI->connect( 'dbi:WMI:' . $exMachine,
     $user,
     $pass,
     {
-        auth => 'basic'
+        auth => 'Basic'
     }
 ) or print 'uh!' . "\n";
 
