@@ -72,21 +72,51 @@ print $dd->Dump;
 print 'ref : ' . ref $body;
 print "\n";
 
+if (2 == 1) {
 my $enumerateResponse = $obj->dataof('//EnumerateResponse');
 $dd = Data::Dumper->new([$enumerateResponse]);
 print $dd->Dump;
 print 'ref : ' . ref $enumerateResponse;
 print "\n";
 
-my @items = $obj->dataof('//EnumerateResponse/Items/Item');
-for my $item (@items) {
-    print 'item';
-    $dd = Data::Dumper->new([$item]);
-    print $dd->Dump;
-    print 'ref item : ' . ref $item;
-    print "\n";
+    my @items = $obj->dataof( '//EnumerateResponse/Items/Item' );
+    for my $item (@items) {
+        print 'item : ';
+        print $item->name();
+        print "\n";
+        next;
+        $dd = Data::Dumper->new( [ $item ] );
+        print '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'."\n";
+        print $dd->Dump;
+        print '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'."\n";
+        print 'ref item : '.ref $item;
+        print "\n";
+    }
 }
 
+#my @items = $obj->valueof('//EnumerateResponse/Items/Item');
+my $item;
+for $item ($obj->valueof('//EnumerateResponse/Items/Item')) {
+    print 'item : ';
+
+    my $data = $item->{Win32_Service};
+    my %data = %$data;
+
+    my @filtered_keys = (
+        'Name',
+        'DisplayName',
+        'SystemName',
+        'Description',
+        'Started',
+        'State'
+    );
+
+    my %filtered_hash;
+    @filtered_keys = grep { exists $data{$_} } @filtered_keys;
+    @filtered_hash{@filtered_keys} = @data{@filtered_keys};
+    $dd = Data::Dumper->new([\%filtered_hash]);
+    print $dd->Dump;
+}
 
 
 
