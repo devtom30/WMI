@@ -28,5 +28,10 @@ ok ($disks);
 my $dd = Data::Dumper->new([$disks]);
 print $dd->Dump;
 
+my $procs = WSMan::getWin32Processor($wsman);
+ok ($procs);
+$dd = Data::Dumper->new([$procs]);
+print $dd->Dump;
+
 done_testing();
 

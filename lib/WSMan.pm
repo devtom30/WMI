@@ -33,4 +33,15 @@ sub getWin32LogicalDisks {
     return $disks;
 }
 
+sub getWin32Processor {
+    my ($wsmanConnection) = @_;
+
+    my $uri = 'http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_Processor';
+    my $obj = Tools::getEnumerateResponseObjectForURI($wsmanConnection, $uri);
+
+    my $procs = Tools::extractDataFromItemsInSoapDataObj($obj, 'Win32_Processor');
+
+    return $procs;
+}
+
 1;
