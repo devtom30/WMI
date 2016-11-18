@@ -14,22 +14,17 @@ my $user = $ARGV[0];
 my $password = $ARGV[1];
 my $host = $ARGV[2];
 my $port = $ARGV[3];
-my $wsman = DMTF::WSMan->new(
-    user=>$user, 
-    pass=>$password, 
-    port=>$port, 
-    protocol=>'http', 
-    host=>$host
-) or print 'pas glop';
+my $wsman = Tools::createWSManConnection(
+    $user,
+    $password,
+    $host,
+    $port
+);
 
 # my $uri = "http://schemas.microsoft.com/wbem/wsman/1/" . "wmi/root/cimv2/Win32_Service?Name=winrm"; 
 # my $uri = "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_Service";
 my $uri = "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_Service";
-my $xml = $wsman->get( 
-    epr=>{
-        ResourceURI=>$uri
-    }
-);
+my $xml = Tools::retrieveURI($wsman, $uri);
 print $xml;
 print "\n";
 print "\n";
@@ -119,4 +114,5 @@ for $item ($obj->valueof('//EnumerateResponse/Items/Item')) {
 }
 
 
+#Win32_LogicalDisk
 
