@@ -14,7 +14,7 @@ my $user = $ARGV[0];
 my $pwd = $ARGV[1];
 
 
-$p = Net::Ping->new();
+my $p = Net::Ping->new();
 print "$computer is alive.\n" if $p->ping($host);
 $p->close();
 
