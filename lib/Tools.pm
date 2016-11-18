@@ -76,4 +76,18 @@ sub filterHashIfKeysInList {
     return \%filteredHash;
 }
 
+sub extractDataFromItemsInSoapDataObj {
+    my ($obj, $itemType, $filteredKeys) = @_;
+
+    my $list = [];
+    my $path = '//EnumerateResponse/Items/Item';
+    for my $item ($obj->valueof($path)) {
+        my $data = $item->{$itemType};
+        my $filteredHash = Tools::filterHashIfKeysInList($data, @$filteredKeys);
+        push @$list, $filteredHash;
+    }
+
+    return $list;
+}
+
 1;

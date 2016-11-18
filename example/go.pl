@@ -116,22 +116,15 @@ for $item ($obj->valueof('//EnumerateResponse/Items/Item')) {
 
 #Win32_LogicalDisk
 
+my @filteredKeys = (
+    'Name',
+    'DisplayName',
+    'SystemName',
+    'Description',
+    'Started',
+    'State'
+);
 $obj = Tools::getEnumerateResponseObjectForURI($wsman, $uri);
-for $item ($obj->valueof('//EnumerateResponse/Items/Item')) {
-    print 'item : ';
-
-    my $data = $item->{Win32_Service};
-
-    my @filtered_keys = (
-        'Name',
-        'DisplayName',
-        'SystemName',
-        'Description',
-        'Started',
-        'State'
-    );
-
-    my $filtered_hash = Tools::filterHashIfKeysInList($data, @filtered_keys);
-    $dd = Data::Dumper->new([$filtered_hash]);
-    print $dd->Dump;
-}
+my $services = Tools::extractDataFromItemsInSoapDataObj($obj, 'Win32_Service', \@filteredKeys);
+$dd = Data::Dumper->new([$services]);
+print $dd->Dump;
