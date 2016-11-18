@@ -83,7 +83,12 @@ sub extractDataFromItemsInSoapDataObj {
     my $path = '//EnumerateResponse/Items/Item';
     for my $item ($obj->valueof($path)) {
         my $data = $item->{$itemType};
-        my $filteredHash = Tools::filterHashIfKeysInList($data, @$filteredKeys);
+        my $filteredHash;
+        if ($filteredKeys) {
+            $filteredHash = Tools::filterHashIfKeysInList($data, @$filteredKeys);
+        } else {
+            $filteredHash = $data;
+        }
         push @$list, $filteredHash;
     }
 
