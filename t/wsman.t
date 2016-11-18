@@ -22,5 +22,11 @@ my $services = WSMan::getWin32Services($wsman);
 ok ($services);
 ok (ref ($services->[0]) eq 'HASH', );
 
+
+my $disks = WSMan::getWin32LogicalDisks($wsman);
+ok ($disks);
+my $dd = Data::Dumper->new([$disks]);
+print $dd->Dump;
+
 done_testing();
 

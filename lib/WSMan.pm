@@ -22,4 +22,15 @@ sub getWin32Services {
     return $services;
 }
 
+sub getWin32LogicalDisks {
+    my ($wsmanConnection) = @_;
+
+    my $uri = 'http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_LogicalDisk';
+    my $obj = Tools::getEnumerateResponseObjectForURI($wsmanConnection, $uri);
+
+    my $disks = Tools::extractDataFromItemsInSoapDataObj($obj, 'Win32_LogicalDisk');
+
+    return $disks;
+}
+
 1;
