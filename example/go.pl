@@ -8,6 +8,7 @@ use SOAP::Lite;
 use Data::Dumper;
 use XML::Parser;
 use Tools;
+use WSMan;
 
 
 my $user = $ARGV[0];
@@ -128,3 +129,4 @@ $obj = Tools::getEnumerateResponseObjectForURI($wsman, $uri);
 my $services = Tools::extractDataFromItemsInSoapDataObj($obj, 'Win32_Service', \@filteredKeys);
 $dd = Data::Dumper->new([$services]);
 print $dd->Dump;
+
