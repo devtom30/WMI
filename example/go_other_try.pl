@@ -14,7 +14,7 @@ my $pass = $ARGV[1];
 my $locator = Win32::OLE->CreateObject('WbemScripting.SWbemLocator') or
     warn;
 my $service = $locator->ConnectServer($computer, "root\\cimv2",
-    "domain\\" . $user, $password);
+    "domain\\" . $user, $pass);
 
 my @col = in($service->ExecQuery('Select * From Win32_Process'));
 
