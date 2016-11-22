@@ -39,3 +39,5 @@ foreach my $item (in($items)) {
     my $dd = Data::Dumper->new([$item]);
     print $dd->Dump;
 }
+
+my $physMem = $service->GetObject('\\\\.\\root\\cimv2:Win32_PhysicalMemory.Tag="Physical Memory 3"') or warn ('pas glop');
