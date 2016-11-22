@@ -31,3 +31,7 @@ foreach my $obj (@col){
     my $dd = Data::Dumper->new([$obj]);
     print $dd->Dump;
 }
+
+my $obj = $service->GetObject('\\\\PKGFR\\root\\cimv2:Win32_PhysicalMemory.Tag="Physical Memory 2"');
+my $dd = Data::Dumper->new([$obj]);
+print $dd->Dump;
