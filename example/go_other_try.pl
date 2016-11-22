@@ -28,6 +28,6 @@ foreach my $proc(@col){
 @col = in($service->ExecQuery('Select * From Win32_PhysicalMemory'));
 
 foreach my $obj (@col){
-    my $dd = Data::Dumper([$obj]);
+    my $dd = Data::Dumper->new([$obj]);
     print $dd->Dump;
 }
