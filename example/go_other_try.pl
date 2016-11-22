@@ -33,7 +33,7 @@ foreach my $obj (@col){
 }
 
 #my $wmiObj = $service->GetObject("winmgmts:\\\\PKGFR-PC\\root\\cimv2");
-my $items = $service->Get('"\\\\PKGFR-PC\\root\\cimv\Win32_PhysicalMemory.Tag="Physical Memory 3"') or warn ('pas glop');
+my $items = $service->Get('"\\\\PKGFR-PC\\root\\cimv2:Win32_PhysicalMemory.Tag="Physical Memory 3"') or warn ('pas glop');
 foreach my $item (in($items)) {
     my $dd = Data::Dumper->new([$item]);
     print $dd->Dump;
