@@ -32,7 +32,7 @@ foreach my $obj (@col){
     print $dd->Dump;
 }
 
-my $items = $service->Get('Win32_PhysicalMemory') or warn ('pas glop');
+my $items = $service->InstancesOf('Win32_PhysicalMemory') or warn ('pas glop');
 foreach my $item (in($items)) {
     my $dd = Data::Dumper->new([$item]);
     print $dd->Dump;
