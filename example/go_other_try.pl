@@ -28,8 +28,9 @@ foreach my $proc(@col){
 @col = in($service->ExecQuery('Select * From Win32_PhysicalMemory'));
 
 foreach my $obj (@col){
-    my $dd = Data::Dumper->new([$obj]);
-    print $dd->Dump;
+#    my $dd = Data::Dumper->new([$obj]);
+#    print $dd->Dump;
+    print $obj->{Name}."\n";
 }
 
 #my $wmiObj = $service->GetObject("winmgmts:\\\\PKGFR-PC\\root\\cimv2");
