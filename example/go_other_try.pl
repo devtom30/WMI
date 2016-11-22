@@ -34,12 +34,13 @@ foreach my $obj (@col){
 
 #my $wmiObj = $service->GetObject("winmgmts:\\\\PKGFR-PC\\root\\cimv2");
 #my $items = $service->Get('\\\\PKGFR-PC\\root\\cimv2:Win32_PhysicalMemory.Tag="Physical Memory 3"') or warn ('pas glop');
+my $physMem = $service->GetObject('\\\\.\\root\\cimv2:Win32_PhysicalMemory.Tag="Physical Memory 3"') or warn ('pas glop');
+my $dd = Data::Dumper->new([$physMem]);
+print $dd->Dump;
+
 my $items = $service->Get('\\\\.\\root\\cimv2:Win32_PhysicalMemory.Tag="Physical Memory 3"') or warn ('pas glop');
 foreach my $item (in($items)) {
     my $dd = Data::Dumper->new([$item]);
     print $dd->Dump;
 }
 
-my $physMem = $service->GetObject('\\\\.\\root\\cimv2:Win32_PhysicalMemory.Tag="Physical Memory 3"') or warn ('pas glop');
-my $dd = Data::Dumper->new([$physMem]);
-print $dd->Dump;
