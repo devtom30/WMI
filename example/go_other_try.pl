@@ -54,7 +54,7 @@ if (2==1) {
 }
 
 
-
+$service = undef;
 $service = $locator->ConnectServer($computer, "root\\default:StdRegProv",
     "domain\\" . $user, $pass);
 print Win32::OLE->LastError() . "\n";
