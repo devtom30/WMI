@@ -53,4 +53,8 @@ $service = $locator->ConnectServer($computer, "root\\default",
     "domain\\" . $user, $pass);
 if ($service) {
     print 'connected to root\\default';
+    my $registry = $service->GetObject('StdRegProv');
+    my $dd = Data::Dumper->new([$registry]);
+    print $dd->Dump;
 }
+
