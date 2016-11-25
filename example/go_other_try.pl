@@ -58,3 +58,11 @@ if ($service) {
     print $dd->Dump;
 }
 
+
+$service = $locator->ConnectServer($computer, "root\\default:StdRegProv",
+    "domain\\" . $user, $pass);
+if ($service) {
+    print "root\\default:StdRegProv";
+
+}
+
