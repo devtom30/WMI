@@ -65,6 +65,7 @@ if ($service) {
 
 $service = $locator->ConnectServer($computer, "root\\default:StdRegProv",
     "domain\\" . $user, $pass);
+print Win32::OLE->LastError();
 if ($service) {
     print "root\\default:StdRegProv";
     print 'querying for keys ' . "\n";
