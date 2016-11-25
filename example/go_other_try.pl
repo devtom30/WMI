@@ -71,7 +71,7 @@ if ($service) {
     print 'querying for keys ' . "\n";
     foreach my $key (in($service->EnumKey(
         HKEY_LOCAL_MACHINE,
-        'Hardware\Description\System\BIOS'
+        'Hardware\\Description\\System\\BIOS'
     ))) {
         print $key . "\n";
     }
