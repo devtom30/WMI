@@ -67,10 +67,12 @@ $service = $locator->ConnectServer($computer, "root\\default:StdRegProv",
     "domain\\" . $user, $pass);
 if ($service) {
     print "root\\default:StdRegProv";
-    $service->GetStringValue(
+    print 'querying for keys ' . "\n";
+    foreach my $key (in($service->EnumKey(
         HKEY_LOCAL_MACHINE,
-        'Hardware/Description/System/BIOS',
-        'BIOSReleaseDate'
-    );
+        'Hardware/Description/System/BIOS'
+    ))) {
+        print $key . "\n";
+    }
 }
 
