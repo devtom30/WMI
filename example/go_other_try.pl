@@ -3,11 +3,15 @@ use strict;
 use warnings FATAL => 'all';
 
 use Win32::OLE qw(in);
+use Win32::OLE::Variant;
 use Data::Dumper;
 
 $| = 1;
 
 Win32::OLE->Option(Warn => 9);
+
+use constant HKEY_LOCAL_MACHINE => 0x80000002;
+
 
 my $computer = $ARGV[2];
 my $user = $ARGV[0];
@@ -63,6 +67,10 @@ $service = $locator->ConnectServer($computer, "root\\default:StdRegProv",
     "domain\\" . $user, $pass);
 if ($service) {
     print "root\\default:StdRegProv";
-
+    $service->GetStringValue(
+        HKEY_LOCAL_MACHINE,
+        'Hardware/Description/System/BIOS',
+        'BIOSReleaseDate'
+    );
 }
 
