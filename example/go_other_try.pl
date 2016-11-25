@@ -55,10 +55,27 @@ if (2==1) {
 
 
 $service = undef;
-$service = $locator->ConnectServer($computer, "root\\default:StdRegProv",
+$service = $locator->ConnectServer($computer, "root\\default",
     "domain\\" . $user, $pass);
 print Win32::OLE->LastError() . "\n";
 if ($service) {
+#vbscript
+    #     $strComputer = "192.168.1.100"
+#    $strUser = "administrator"
+#    $strPassword = "password"
+#
+#    $HKEY_LOCAL_MACHINE = 0x80000002
+#    $strKeyPath = "HARDWARE\DESCRIPTION\System\CentralProcessor\0\"
+#$strEntryName = "ProcessorNameString"
+#$strValue = ""
+#
+#$objSWbemLocator = ObjCreate("WbemScripting.SWbemLocator")
+#$objSWbemServices = $objSWbemLocator.ConnectServer($strComputer, "root\default", $strUser, $strPassword)
+#
+#$objReg = $objSWbemServices.Get("StdRegProv")
+#$objReg.GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $strValue)
+#ConsoleWrite("strValue = " & $strValue & @CRLF)
+
     print "root\\default:StdRegProv";
     print 'querying for keys ' . "\n";
     foreach my $key (in($service->EnumKey(
