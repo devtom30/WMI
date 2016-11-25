@@ -47,3 +47,8 @@ foreach my $item (in($items)) {
     print $dd->Dump;
 }
 
+$service = $locator->ConnectServer($computer, "root\\default",
+    "domain\\" . $user, $pass);
+if ($service) {
+    print 'connected to root\\default';
+}
