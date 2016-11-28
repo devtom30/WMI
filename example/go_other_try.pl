@@ -139,3 +139,10 @@ $iRC = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE,
     $sPath, $arr); # or die "Cannot fetch registry key :",
 print 'iRC : ' . $iRC . "\n";
 
+$arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
+$strKeyPath = 'HARDWARE\DESCRIPTION\System\CentralProcessor\0';
+# Do not use Die for this method
+$iRC = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE,
+    $strKeyPath, $arr); # or die "Cannot fetch registry key :",
+print 'iRC : ' . $iRC . "\n";
+
