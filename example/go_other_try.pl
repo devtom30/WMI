@@ -114,8 +114,3 @@ my $i = 0;
 foreach my $key (in( $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $sPath))) {
     print $i . ' - ' . ref($key) . "\n";
 }
-
-
-my $regProv = 'regprov';
-$objReg = $objSWbemServices->Get($regProv);
-
