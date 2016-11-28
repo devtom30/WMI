@@ -101,6 +101,7 @@ $sPath = "HARDWARE\\Description\\System";
 $iRC = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE,
     $sPath, $arr); # or die "Cannot fetch registry key :",
 print Win32::OLE->LastError . "\n";
+print 'iRC : ' . $iRC . "\n";
 print 'ref($arr) : ' . ref($arr) . "\n";
 print 'foreach ' . "\n";
 foreach my $item ( in( $arr->Value ) ) {
@@ -120,7 +121,7 @@ $sPath = "HARDWARD\\Description\\System";
 $iRC = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE,
     $sPath, $arr); # or die "Cannot fetch registry key :",
 print Win32::OLE->LastError . "\n";
-print $iRC . "\n";
+print 'iRC : ' . $iRC . "\n";
 
 foreach my $item ( in( $arr->Value ) ) {
     print "$item \n";
