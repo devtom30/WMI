@@ -93,7 +93,7 @@ foreach my $item ( in( $arr->Value ) ) {
     print "$item \n";
 } # end foreach
 
-
+$arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
 $sPath = "Hardware\\Description\\System\\BIOS";
 # Do not use Die for this method
 $iRC = $objReg->EnumKey($HKEY_LOCAL_MACHINE,
