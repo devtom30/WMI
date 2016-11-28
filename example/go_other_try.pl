@@ -83,15 +83,15 @@ print 'result : ' . $result;
 print "\n";
 print Win32::OLE->LastError() . "\n";
 
-my $keys = Variant(VT_BYREF|VT_VARIANT);
-my $base = '';
-$result = $objReg->EnumKey('/Hardware/Description/System/BIOS', $base, $keys);
-my @dim = $keys->Dim;
-for ($dim[0][0] .. $dim[0][1]) {
-    my $key = $keys->Get($_);
-    print $key;
-    print "\n";
-}
+my $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
+my $sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
+# Do not use Die for this method
+my $iRC = $objReg->EnumKey($HKEY_LOCAL_MACHINE,
+    $sPath, $arr); # or die "Cannot fetch registry key :",
+print Win32::OLE->LastError;
+foreach my $item ( in( $arr->Value ) ) {
+    print "$item \n";
+} # end foreach
 
 foreach my $key (in($objReg->EnumKey(
         $HKEY_LOCAL_MACHINE,
