@@ -133,7 +133,7 @@ unless ($iRC == 0) {
 $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
 $sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
 # Do not use Die for this method
-my $iRC = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE,
+$iRC = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE,
     $sPath, $arr); # or die "Cannot fetch registry key :",
 print 'iRC : ' . $iRC . "\n";
 
