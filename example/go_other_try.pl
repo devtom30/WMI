@@ -71,7 +71,7 @@ my $strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEnt
 print 'strValue : ' . $strValue;
 print "\n";
 
-foreach my $key (in($objSWbemServices->EnumKey(
+foreach my $key (in($objReg->EnumKey(
         HKEY_LOCAL_MACHINE,
         "/Hardware/Description/System/BIOS"
     ))) {
