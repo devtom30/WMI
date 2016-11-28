@@ -77,6 +77,12 @@ foreach my $key (in($objReg->EnumKey(
     ))) {
     print $key . "\n";
 }
+foreach my $key (in($objReg->EnumKey(
+        $HKEY_LOCAL_MACHINE,
+        "Software"
+    ))) {
+    print $key . "\n";
+}
 print Win32::OLE->LastError() . "\n";
 
 
