@@ -70,16 +70,19 @@ my $objReg = $objSWbemServices->Get("StdRegProv");
 my $strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
 print 'strValue : ' . $strValue;
 print "\n";
+print Win32::OLE->LastError() . "\n";
 
 $strKeyPath = 'HARDWARE\DESCRIPTION\System\CentralProcessor\0';
 $strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
 print 'strValue : ' . $strValue;
 print "\n";
+print Win32::OLE->LastError() . "\n";
 
 $strKeyPath = 'HARDWARD\DESCRIPTION\System\CentralProcessor\0';
 $strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
 print 'strValue : ' . $strValue;
 print "\n";
+print Win32::OLE->LastError() . "\n";
 
 
 foreach my $key (in($objReg->EnumKey(
