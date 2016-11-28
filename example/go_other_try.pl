@@ -77,7 +77,7 @@ print "\n";
 print Win32::OLE->LastError() . "\n";
 
 $strKeyPath = 'HARDWARE\DESCRIPTION\System\CentralProcessor\0';
-$strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
+$strValue = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
 print 'strValue : ' . $strValue;
 print "\n";
 print 'result : ' . $result;
@@ -87,7 +87,7 @@ print Win32::OLE->LastError() . "\n";
 my $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
 my $sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
 # Do not use Die for this method
-my $iRC = $objReg->EnumKey($HKEY_LOCAL_MACHINE,
+my $iRC = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE,
     $sPath, $arr); # or die "Cannot fetch registry key :",
 print Win32::OLE->LastError;
 foreach my $item ( in( $arr->Value ) ) {
@@ -98,7 +98,7 @@ $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
 $sPath = "HARDWARE\\Description\\System";
 #$sPath = "HARDWARE\\DESCRIPTION\\System";
 # Do not use Die for this method
-$iRC = $objReg->EnumKey($HKEY_LOCAL_MACHINE,
+$iRC = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE,
     $sPath, $arr); # or die "Cannot fetch registry key :",
 print Win32::OLE->LastError . "\n";
 print 'ref($arr) : ' . ref($arr) . "\n";
@@ -111,6 +111,6 @@ foreach my $item ( in( $arr->Value ) ) {
 #$arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
 #$sPath = "HARDWARE\\Description\\System\\BIOS";
 my $i = 0;
-foreach my $key (in( $objReg->EnumKey($HKEY_LOCAL_MACHINE, $sPath))) {
+foreach my $key (in( $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $sPath))) {
     print $i . ' - ' . ref($key) . "\n";
 }
