@@ -67,8 +67,11 @@ my $objSWbemLocator = Win32::OLE->CreateObject("WbemScripting.SWbemLocator");
 my $objSWbemServices = $objSWbemLocator->ConnectServer($computer, "root\\default", $user, $pass);
 #
 my $objReg = $objSWbemServices->Get("StdRegProv");
-my $strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
+my $result = Variant(VT_BYREF|VT_BSTR,0);
+my $strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
 print 'strValue : ' . $strValue;
+print "\n";
+print 'result : ' . $result;
 print "\n";
 print Win32::OLE->LastError() . "\n";
 
