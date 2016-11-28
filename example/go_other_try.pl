@@ -111,5 +111,5 @@ foreach my $item ( in( $arr->Value ) ) {
 #$sPath = "HARDWARE\\Description\\System\\BIOS";
 my $i = 0;
 foreach my $key (in( $objReg->EnumKey($HKEY_LOCAL_MACHINE, $sPath))) {
-    print $i . ' - ' . $key . "\n";
+    print $i . ' - ' . $key->Value . "\n";
 }
