@@ -109,7 +109,7 @@ foreach my $item ( in( $arr->Value ) ) {
 
 #$arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
 #$sPath = "HARDWARE\\Description\\System\\BIOS";
-
-foreach my $key (in( $objReg->EnumKey($HKEY_LOCAL_MACHINE, $sPath, $arr))) {
-    print $key . "\n";
+my $i = 0;
+foreach my $key (in( $objReg->EnumKey($HKEY_LOCAL_MACHINE, $sPath))) {
+    print $i . ' - ' . $key . "\n";
 }
