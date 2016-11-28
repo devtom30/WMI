@@ -63,8 +63,8 @@ if (2==1) {
     my $strEntryName = "ProcessorNameString";
 #$strValue = ""
 #
-    my $objSWbemLocator = CreateObject("WbemScripting.SWbemLocator");
-    my $objSWbemServices = $objSWbemLocator.ConnectServer($computer, "root\\default", $user, $pass);
+    my $objSWbemLocator = Win32::OLE->CreateObject("WbemScripting.SWbemLocator");
+    my $objSWbemServices = $objSWbemLocator->ConnectServer($computer, "root\\default", $user, $pass);
 #
     my $objReg = $objSWbemServices.Get("StdRegProv");
     my $strValue = $objReg.GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
