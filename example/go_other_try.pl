@@ -124,10 +124,12 @@ $iRC = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE,
     $sPath, $arr); # or die "Cannot fetch registry key :",
 print Win32::OLE->LastError . "\n";
 print 'iRC : ' . $iRC . "\n";
-unless ($iRC == 0) {
+if ($iRC != 0) {
     foreach my $item (in( $arr->Value )) {
         print "$item \n";
     } # end foreach
+} else {
+    print 'not doing the foreach' . "\n";
 }
 
 $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
