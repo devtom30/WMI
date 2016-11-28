@@ -99,6 +99,11 @@ foreach my $key (in($objReg->EnumKey(
 }
 print Win32::OLE->LastError() . "\n";
 
+$strKeyPath = 'HARDWARD';
+$strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
+print 'strValue : ' . $strValue;
+print "\n";
+print Win32::OLE->LastError() . "\n";
 
 $service = undef;
 $service = $locator->ConnectServer($computer, "root\\default",
