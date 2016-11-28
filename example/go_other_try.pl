@@ -83,14 +83,15 @@ print 'result : ' . $result;
 print "\n";
 print Win32::OLE->LastError() . "\n";
 
-$strKeyPath = 'HARDWARD\DESCRIPTION\System\CentralProcessor\0';
-$strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
-print 'strValue : ' . $strValue;
-print "\n";
-print 'result : ' . $result;
-print "\n";
-print Win32::OLE->LastError() . "\n";
-
+my $keys = Variant(VT_BYREF|VT_VARIANT);
+my $base = '';
+$result = $objReg->EnumKey('/Hardware/Description/System/BIOS', $base, $keys);
+my @dim = $keys->Dim;
+for ($dim[0][0] .. $dim[0][1]) {
+    my $key = $keys->Get($_);
+    print $key;
+    print "\n";
+}
 
 foreach my $key (in($objReg->EnumKey(
         $HKEY_LOCAL_MACHINE,
