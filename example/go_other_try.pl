@@ -93,48 +93,12 @@ foreach my $item ( in( $arr->Value ) ) {
     print "$item \n";
 } # end foreach
 
-foreach my $key (in($objReg->EnumKey(
-        $HKEY_LOCAL_MACHINE,
-        "/Hardware/Description/System/BIOS"
-    ))) {
-    print $key . "\n";
-}
-foreach my $key (in($objReg->EnumKey(
-        $HKEY_LOCAL_MACHINE,
-        "Software\\"
-    ))) {
-    print $key . "\n";
-}
-print Win32::OLE->LastError() . "\n";
 
-$strKeyPath = 'HARDWARD';
-$strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
-print 'strValue : ' . $strValue;
-print "\n";
-print Win32::OLE->LastError() . "\n";
-
-$service = undef;
-$service = $locator->ConnectServer($computer, "root\\default",
-    "domain\\" . $user, $pass);
-print Win32::OLE->LastError() . "\n";
-if ($service) {
-
-    print "root\\default:StdRegProv";
-    print 'querying for keys ' . "\n";
-    foreach my $key (in($service->EnumKey(
-        HKEY_LOCAL_MACHINE,
-        "/Hardware/Description/System/BIOS"
-    ))) {
-        print $key . "\n";
-    }
-    print Win32::OLE->LastError() . "\n";
-}
-
-$service = $locator->ConnectServer($computer, "root\\default",
-    "domain\\" . $user, $pass);
-if ($service) {
-    print 'connected to root\\default';
-    my $registry = $service->GetObject('StdRegProv');
-    my $dd = Data::Dumper->new([$registry]);
-    print $dd->Dump;
-}
+$sPath = "Hardware\\Description\\System\\BIOS";
+# Do not use Die for this method
+$iRC = $objReg->EnumKey($HKEY_LOCAL_MACHINE,
+    $sPath, $arr); # or die "Cannot fetch registry key :",
+print Win32::OLE->LastError;
+foreach my $item ( in( $arr->Value ) ) {
+    print "$item \n";
+} # end foreach
