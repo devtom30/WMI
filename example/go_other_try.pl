@@ -94,7 +94,7 @@ foreach my $item ( in( $arr->Value ) ) {
 } # end foreach
 
 $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
-$sPath = "HARDWARE\\Description\\System\\BIOS";
+$sPath = "HARDWARE\\Description\\System\\Bios";
 #$sPath = "HARDWARE\\DESCRIPTION\\System";
 # Do not use Die for this method
 $iRC = $objReg->EnumKey($HKEY_LOCAL_MACHINE,
