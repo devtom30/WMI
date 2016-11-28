@@ -72,7 +72,7 @@ print 'strValue : ' . $strValue;
 print "\n";
 
 foreach my $key (in($objReg->EnumKey(
-        HKEY_LOCAL_MACHINE,
+        $HKEY_LOCAL_MACHINE,
         "/Hardware/Description/System/BIOS"
     ))) {
     print $key . "\n";
