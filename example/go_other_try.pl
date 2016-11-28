@@ -79,7 +79,7 @@ foreach my $key (in($objReg->EnumKey(
 }
 foreach my $key (in($objReg->EnumKey(
         $HKEY_LOCAL_MACHINE,
-        "/Software"
+        "Software\\"
     ))) {
     print $key . "\n";
 }
