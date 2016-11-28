@@ -124,7 +124,16 @@ $iRC = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE,
     $sPath, $arr); # or die "Cannot fetch registry key :",
 print Win32::OLE->LastError . "\n";
 print 'iRC : ' . $iRC . "\n";
-exit unless $iRC == 0;
-foreach my $item ( in( $arr->Value ) ) {
-    print "$item \n";
-} # end foreach
+unless ($iRC == 0) {
+    foreach my $item (in( $arr->Value )) {
+        print "$item \n";
+    } # end foreach
+}
+
+$arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
+$sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
+# Do not use Die for this method
+my $iRC = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE,
+    $sPath, $arr); # or die "Cannot fetch registry key :",
+print 'iRC : ' . $iRC . "\n";
+
