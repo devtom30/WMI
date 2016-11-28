@@ -76,6 +76,12 @@ $strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryN
 print 'strValue : ' . $strValue;
 print "\n";
 
+$strKeyPath = 'HARDWARD\DESCRIPTION\System\CentralProcessor\0';
+$strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
+print 'strValue : ' . $strValue;
+print "\n";
+
+
 foreach my $key (in($objReg->EnumKey(
         $HKEY_LOCAL_MACHINE,
         "/Hardware/Description/System/BIOS"
