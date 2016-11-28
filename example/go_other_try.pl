@@ -4,6 +4,7 @@ use warnings FATAL => 'all';
 
 use Win32::OLE qw(in);
 use Win32::OLE::Variant;
+use Win32::Registry;
 use Data::Dumper;
 
 $| = 1;
@@ -58,7 +59,7 @@ if (2==1) {
 #    $strUser = "administrator"
 #    $strPassword = "password"
 #
-my $HKEY_LOCAL_MACHINE = 0x80000002;
+#my $HKEY_LOCAL_MACHINE = 0x80000002;
 my $strKeyPath = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
 my $strEntryName = "ProcessorNameString";
 #$strValue = ""
