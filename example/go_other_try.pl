@@ -103,12 +103,10 @@ print Win32::OLE->LastError . "\n";
 print 'foreach ' . "\n";
 foreach my $item ( in( $arr->Value ) ) {
     print $item . "\n";
-    print $item->Name . "\n";
 } # end foreach
 print 'foreach ' . "\n";
 foreach my $item ( in( $arr->Name ) ) {
     print $item . "\n";
-    print $item->Name . "\n";
 } # end foreach
 print 'foreach ' . "\n";
 foreach my $item ( in( $arr->Value ) ) {
