@@ -69,7 +69,7 @@ my $objSWbemServices = $objSWbemLocator->ConnectServer($computer, "root\\default
 #
 my $objReg = $objSWbemServices->Get("StdRegProv");
 my $result = Variant(VT_BYREF|VT_BSTR,0);
-my $strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
+my $strValue = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
 print 'strValue : ' . $strValue;
 print "\n";
 print 'result : ' . $result;
