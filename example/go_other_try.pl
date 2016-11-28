@@ -63,7 +63,7 @@ if (2==1) {
     my $strEntryName = "ProcessorNameString";
 #$strValue = ""
 #
-    my $objSWbemLocator = ObjCreate("WbemScripting.SWbemLocator");
+    my $objSWbemLocator = CreateObject("WbemScripting.SWbemLocator");
     my $objSWbemServices = $objSWbemLocator.ConnectServer($computer, "root\\default", $user, $pass);
 #
     my $objReg = $objSWbemServices.Get("StdRegProv");
