@@ -54,22 +54,31 @@ if (2==1) {
 }
 
 #vbscript
-    #     $strComputer = "192.168.1.100"
-    #    $strUser = "administrator"
-    #    $strPassword = "password"
-    #
-    my $HKEY_LOCAL_MACHINE = 0x80000002;
-    my $strKeyPath = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
-    my $strEntryName = "ProcessorNameString";
+#     $strComputer = "192.168.1.100"
+#    $strUser = "administrator"
+#    $strPassword = "password"
+#
+my $HKEY_LOCAL_MACHINE = 0x80000002;
+my $strKeyPath = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
+my $strEntryName = "ProcessorNameString";
 #$strValue = ""
 #
-    my $objSWbemLocator = Win32::OLE->CreateObject("WbemScripting.SWbemLocator");
-    my $objSWbemServices = $objSWbemLocator->ConnectServer($computer, "root\\default", $user, $pass);
+my $objSWbemLocator = Win32::OLE->CreateObject("WbemScripting.SWbemLocator");
+my $objSWbemServices = $objSWbemLocator->ConnectServer($computer, "root\\default", $user, $pass);
 #
-    my $objReg = $objSWbemServices->Get("StdRegProv");
-    my $strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
-    print 'strValue : ' . $strValue;
-    print "\n";
+my $objReg = $objSWbemServices->Get("StdRegProv");
+my $strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
+print 'strValue : ' . $strValue;
+print "\n";
+
+foreach my $key (in($objSWbemServices->EnumKey(
+        HKEY_LOCAL_MACHINE,
+        "/Hardware/Description/System/BIOS"
+    ))) {
+    print $key . "\n";
+}
+print Win32::OLE->LastError() . "\n";
+
 
 $service = undef;
 $service = $locator->ConnectServer($computer, "root\\default",
