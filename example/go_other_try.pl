@@ -76,14 +76,18 @@ print "\n";
 print Win32::OLE->LastError() . "\n";
 
 $strKeyPath = 'HARDWARE\DESCRIPTION\System\CentralProcessor\0';
-$strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
+$strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
 print 'strValue : ' . $strValue;
+print "\n";
+print 'result : ' . $result;
 print "\n";
 print Win32::OLE->LastError() . "\n";
 
 $strKeyPath = 'HARDWARD\DESCRIPTION\System\CentralProcessor\0';
-$strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
+$strValue = $objReg->GetStringValue($HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
 print 'strValue : ' . $strValue;
+print "\n";
+print 'result : ' . $result;
 print "\n";
 print Win32::OLE->LastError() . "\n";
 
