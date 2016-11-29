@@ -10,7 +10,7 @@ my $computer = $ARGV[2];
 my $user = $ARGV[0];
 my $pass = $ARGV[1];
 
-my $service = Win32::_connectToService(
+my $service = TheWin32::_connectToService(
     $computer,
     $user,
     $pass,
