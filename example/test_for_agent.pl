@@ -42,8 +42,9 @@ tryAllPath( $objReg, $path );
 
 my $p = "HARDWARE";
 my $e = "Description";
+my $result = Variant(VT_BYREF|VT_BSTR,0);
 print $p . ' - ' . $e . ' ? ';
-my $res = $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e );
+my $res = $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e, $result );
 if ( $res && $res == 0 ) {
     print 'ok' . "\n";
 }
@@ -54,7 +55,7 @@ else {
 $p = "HARDWARE\\DESCRIPTION\\System\\BIOS";
 $e = "BIOSReleaseDate";
 print $p . ' - ' . $e . ' ? ';
-$res = $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e );
+$res = $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e, $result );
 if ( $res && $res == 0 ) {
     print 'ok' . "\n";
 }
@@ -65,7 +66,7 @@ else {
 $p = "HARDWARE\\DESCRIPTION\\System\\BIOS";
 $e = "BIOSReleaseDate";
 print $p . ' - ' . $e . ' ? ';
-$res = $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e );
+$res = $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e, $result );
 if ( $res && $res == 0 ) {
         print 'ok' . "\n";
 }
@@ -76,7 +77,7 @@ else {
 $p = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
 $e = "ProcessorNameString";
 print $p . ' - ' . $e . ' ? ';
-$res = $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e );
+$res = $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e, $result );
 if ( $res && $res == 0 ) {
     print 'ok' . "\n";
 }
