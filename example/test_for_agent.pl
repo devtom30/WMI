@@ -37,7 +37,8 @@ tryAllPath( $objReg, $path );
 my $p = "HARDWARE";
 my $e = "Description";
 print $p . ' - ' . $e . ' ? ';
-if ( $objReg->EnumKey( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e ) ) {
+my $res = $objReg->EnumKey( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e );
+if ( $res && $res == 0 ) {
     print 'ok' . "\n";
 }
 else {
@@ -47,7 +48,8 @@ else {
 $p = "HARDWARE\\DESCRIPTION\\System\\BIOS";
 $e = "BIOSReleaseDate";
 print $p . ' - ' . $e . ' ? ';
-if ( $objReg->EnumKey( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e ) ) {
+$res = $objReg->EnumKey( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e );
+if ( $res && $res == 0 ) {
     print 'ok' . "\n";
 }
 else {
@@ -57,8 +59,9 @@ else {
 $p = "HARDWARE\\DESCRIPTION\\System\\BIOS";
 $e = "BIOSReleaseDate";
 print $p . ' - ' . $e . ' ? ';
-if ( $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e ) ) {
-    print 'ok' . "\n";
+$res = $objReg->EnumKey( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e );
+if ( $res && $res == 0 ) {
+        print 'ok' . "\n";
 }
 else {
     print 'pas glop' . "\n";
@@ -67,7 +70,8 @@ else {
 $p = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
 $e = "ProcessorNameString";
 print $p . ' - ' . $e . ' ? ';
-if ( $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e ) ) {
+$res = $objReg->EnumKey( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e );
+if ( $res && $res == 0 ) {
     print 'ok' . "\n";
 }
 else {
