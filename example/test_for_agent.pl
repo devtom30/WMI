@@ -44,7 +44,7 @@ else {
     print 'pas glop' . "\n";
 }
 
-$p = "HARDWARE\\Description\\System\\BIOS";
+$p = "HARDWARE\\DESCRIPTION\\System\\BIOS";
 $e = "BIOSReleaseDate";
 print $p . ' - ' . $e . ' ? ';
 if ( $objReg->EnumKey( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e ) ) {
