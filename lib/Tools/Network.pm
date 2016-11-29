@@ -9,7 +9,7 @@ use Net::IP qw(:PROC);
 use Net::hostent;
 use Socket;
 
-use FusionInventory::Agent::Tools;
+use Tools;
 
 our @EXPORT = qw(
     $mac_address_pattern
