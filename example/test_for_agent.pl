@@ -35,7 +35,7 @@ print 'objReg ok' . "\n";
 
 my $path = "HARDWARE/Description/System/BIOS/BIOSReleaseDate";
 $path =~ s/\//\\\\/g;
-print '$path is : ' . $strKeyPath . "\n";
+print '$path is : ' . $path . "\n";
 print 'trying all paths ' . "\n";
 tryAllPath($objReg, $path);
 
