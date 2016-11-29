@@ -40,6 +40,11 @@ print '$path is : ' . $path . "\n";
 print 'trying all paths ' . "\n";
 tryAllPath( $objReg, $path );
 
+my $p;
+my $e;
+my $result;
+my $res;
+
 #my $p = "HARDWARE";
 #my $e = "Description";
 #my $result = Variant(VT_BYREF|VT_BSTR,0);
