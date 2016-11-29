@@ -4,6 +4,7 @@ use warnings FATAL => 'all';
 
 use Win32::OLE;
 use Win32::OLE::Variant;
+use Win32::Registry;
 
 use TheWin32;
 
@@ -27,6 +28,18 @@ my $objSWbemLocator = Win32::OLE->CreateObject("WbemScripting.SWbemLocator");
 my $objSWbemServices = $objSWbemLocator->ConnectServer($computer, "root\\default", $user, $pass);
 #
 $objReg = $objSWbemServices->Get("StdRegProv");
+
+my $strKeyPathT = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
+my $strEntryNameT = "ProcessorNameString";
+my $resultT = Variant(VT_BYREF|VT_BSTR,0);
+my $strValueT = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPathT, $strEntryNameT, $resultT);
+print '>>>>>>>>>>>>>>>>>>>>> TEMOIN' . "\n";
+print 'strValue : ' . $strValueT;
+print "\n";
+print 'result : ' . $resultT;
+print "\n";
+print Win32::OLE->LastError() . "\n";
+print '<<<<<<<<<<<<<<<<<<<< TEMOIN' . "\n";
 
 if ( !$objReg ) {
     print 'sa race de objReg';
