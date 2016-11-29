@@ -31,7 +31,7 @@ my $objReg = $service->Get("StdRegProv");
 
 my $strKeyPathT = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
 my $strEntryNameT = "ProcessorNameString";
-my $resultT = Variant(VT_BYREF|VT_BSTR,0);
+my $resultT = Variant(VT_BYREF()|VT_BSTR(),0);
 my $strValueT = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPathT, $strEntryNameT, $resultT);
 print '>>>>>>>>>>>>>>>>>>>>> TEMOIN' . "\n";
 print 'strValue : ' . $strValueT;
@@ -73,7 +73,7 @@ my $res;
 $p = "HARDWARE\\DESCRIPTION\\System\\BIOS";
 $e = "BIOSReleaseDate";
 print $p . ' - ' . $e . ' ? ';
-$result = Variant(VT_BYREF|VT_BSTR,0);
+$result = Variant(VT_BYREF()|VT_BSTR(),0);
 $res = $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e, $result );
 print '$res : ' . $res . "\n";
 print '$result : ' . $result . "\n";
