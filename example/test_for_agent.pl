@@ -2,6 +2,7 @@
 use strict;
 use warnings FATAL => 'all';
 
+use Win32::OLE;
 
 use TheWin32;
 
