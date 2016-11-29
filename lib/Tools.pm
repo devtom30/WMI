@@ -1,4 +1,4 @@
-package FusionInventory::Agent::Tools;
+package Tools;
 
 use strict;
 use warnings;
