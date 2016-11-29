@@ -59,17 +59,17 @@ sub tryAllPath {
     my ($objReg, $path) = @_;
 
     my @path = split /\\\\/, $path;
-    my $path = shift;
+    my $pathToEntry = shift;
     my $entry;
 
     while (@path) {
         $entry = shift;
-        if (tryPath($objReg, $path, $entry)) {
-            print 'good for ' . $path . ' ' . $entry . "\n";
-            $path .= "\\" . $entry;
+        if (tryPath($objReg, $pathToEntry, $entry)) {
+            print 'good for ' . $pathToEntry . ' ' . $entry . "\n";
+            $pathToEntry .= "\\" . $entry;
             $entry = shift @path;
         } else {
-            print 'foirade for ' . $path . ' ' . $entry . "\n";
+            print 'foirade for ' . $pathToEntry . ' ' . $entry . "\n";
             last;
         }
     }
