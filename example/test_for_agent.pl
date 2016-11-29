@@ -43,7 +43,7 @@ if (!$strValue || $strValue != 0) {
 }
 print 'strValue : ' . $strValue;
 
-my $strValue = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
+$strValue = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
 
 print 'result : ' . $result;
 
