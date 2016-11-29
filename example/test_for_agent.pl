@@ -23,11 +23,11 @@ print 'service ok ';
 print "\n";
 
 my $objReg = $service->Get("StdRegProv");
-
-my $objSWbemLocator = Win32::OLE->CreateObject("WbemScripting.SWbemLocator");
-my $objSWbemServices = $objSWbemLocator->ConnectServer($computer, "root\\default", $user, $pass);
 #
-$objReg = $objSWbemServices->Get("StdRegProv");
+#my $objSWbemLocator = Win32::OLE->CreateObject("WbemScripting.SWbemLocator");
+#my $objSWbemServices = $objSWbemLocator->ConnectServer($computer, "root\\default", $user, $pass);
+##
+#$objReg = $objSWbemServices->Get("StdRegProv");
 
 my $strKeyPathT = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
 my $strEntryNameT = "ProcessorNameString";
