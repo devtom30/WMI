@@ -34,7 +34,7 @@ if (!$objReg) {
 print 'objReg ok' . "\n";
 
 my $strKeyPath = "HARDWARE/Description/System/BIOS";
-$strKeyPath =~ s/\//\\\\/;
+$strKeyPath =~ s/\//\\\\/g;
 print '$strKeyPath is : ' . $strKeyPath . "\n";
 my $strEntryName = "BIOSReleaseDate";
 my $result = Variant(VT_BYREF()|VT_BSTR(),0);
