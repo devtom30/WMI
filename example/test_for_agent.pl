@@ -33,6 +33,12 @@ if (!$objReg) {
 }
 print 'objReg ok' . "\n";
 
+my $path = "HARDWARE/Description/System/BIOS/BIOSReleaseDate";
+$path =~ s/\//\\\\/g;
+print '$path is : ' . $strKeyPath . "\n";
+print 'trying all paths ' . "\n";
+tryAllPath($objReg, $path);
+
 my $strKeyPath = "HARDWARE/Description/System/BIOS";
 $strKeyPath =~ s/\//\\\\/g;
 print '$strKeyPath is : ' . $strKeyPath . "\n";
@@ -49,3 +55,37 @@ $strValue = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKe
 
 print 'result : ' . $result;
 
+sub tryAllPath {
+    my ($objReg, $path) = @_;
+
+    my @path = split /\\\\/, $path;
+    my $path = shift;
+    my $entry;
+
+    while (@path) {
+        $entry = shift;
+        if (tryPath($objReg, $path, $entry)) {
+            print 'good for ' . $path . ' ' . $entry . "\n";
+            $path .= "\\" . $entry;
+            $entry = shift @path;
+        } else {
+            print 'foirade for ' . $path . ' ' . $entry . "\n";
+            last;
+        }
+    }
+}
+
+sub tryPath {
+    my ($objReg, $path, $entry) = @_;
+
+
+    my $strValue = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $path, $entry);
+
+    my $ret;
+    if (!$strValue || $strValue != 0) {
+        $ret = 0;
+    } else {
+        $ret = 1;
+    }
+    return $ret;
+}
