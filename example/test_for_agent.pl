@@ -63,7 +63,11 @@ sub tryAllPath {
     my $entry;
 
     while (@path) {
-        $entry = shift @path;
+        if ($entry =~ /[a-z]+/) {
+            $entry = uc $entry;
+        } else {
+            $entry = shift @path;
+        }
         if (tryPath($objReg, $pathToEntry, $entry)) {
             print 'good for ' . $pathToEntry . ' ' . $entry . "\n";
             $pathToEntry .= "\\" . $entry;
