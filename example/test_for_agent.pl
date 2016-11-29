@@ -63,11 +63,10 @@ sub tryAllPath {
     my $entry;
 
     while (@path) {
-        $entry = shift;
+        $entry = shift @path;
         if (tryPath($objReg, $pathToEntry, $entry)) {
             print 'good for ' . $pathToEntry . ' ' . $entry . "\n";
             $pathToEntry .= "\\" . $entry;
-            $entry = shift @path;
         } else {
             print 'foirade for ' . $pathToEntry . ' ' . $entry . "\n";
             last;
