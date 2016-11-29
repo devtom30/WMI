@@ -64,6 +64,17 @@ else {
     print 'pas glop' . "\n";
 }
 
+$p = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
+$e = "ProcessorNameString";
+print $p . ' - ' . $e . ' ? ';
+if ( $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e ) ) {
+    print 'ok' . "\n";
+}
+else {
+    print 'pas glop' . "\n";
+}
+
+
 my $strKeyPath = "HARDWARE/Description/System/BIOS";
 $strKeyPath =~ s/\//\\\\/g;
 print '$strKeyPath is : ' . $strKeyPath . "\n";
