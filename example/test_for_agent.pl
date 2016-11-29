@@ -59,7 +59,7 @@ sub tryAllPath {
     my ($objReg, $path) = @_;
 
     my @path = split /\\\\/, $path;
-    my $pathToEntry = shift;
+    my $pathToEntry = shift @path;
     my $entry;
 
     while (@path) {
