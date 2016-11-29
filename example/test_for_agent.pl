@@ -135,7 +135,7 @@ my $strKeyPath = "HARDWARE/Description/System/BIOS";
 $strKeyPath =~ s/\//\\\\/g;
 print '$strKeyPath is : ' . $strKeyPath . "\n";
 my $strEntryName = "BIOSReleaseDate";
-my $result = Variant( VT_BYREF() | VT_BSTR(), 0 );
+$result = Variant( VT_BYREF() | VT_BSTR(), 0 );
 my $strValue = $objReg->GetStringValue( $Win32::Registry::HKEY_LOCAL_MACHINE,
     $strKeyPath, $strEntryName );
 if ( !$strValue || $strValue != 0 ) {
