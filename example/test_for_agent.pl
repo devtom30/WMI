@@ -72,6 +72,7 @@ sub tryAllPath {
             print 'good for ' . $pathToEntry . ' ' . $entry . "\n";
             $pathToEntry .= "\\" . $entry;
         } else {
+            next if ($entry && $entry =~ /[a-z]+/);
             print 'foirade for ' . $pathToEntry . ' ' . $entry . "\n";
             last;
         }
