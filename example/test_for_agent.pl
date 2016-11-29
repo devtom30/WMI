@@ -67,6 +67,7 @@ if ( $res && $res == 0 ) {
 else {
     print 'pas glop' . "\n";
 }
+print '$result : ' . $result . "\n";
 
 $p = "HARDWARE\\DESCRIPTION\\System\\BIOS";
 $e = "BIOSReleaseDate";
@@ -78,6 +79,7 @@ if ( $res && $res == 0 ) {
 else {
     print 'pas glop' . "\n";
 }
+print '$result : ' . $result . "\n";
 
 $p = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
 $e = "ProcessorNameString";
@@ -89,7 +91,7 @@ if ( $res && $res == 0 ) {
 else {
     print 'pas glop' . "\n";
 }
-
+print '$result : ' . $result . "\n";
 
 $p = "HARDWARE";
 $e = "Description";
