@@ -22,6 +22,12 @@ print 'service ok ';
 print "\n";
 
 my $objReg = $service->Get("StdRegProv");
+
+my $objSWbemLocator = Win32::OLE->CreateObject("WbemScripting.SWbemLocator");
+my $objSWbemServices = $objSWbemLocator->ConnectServer($computer, "root\\default", $user, $pass);
+#
+$objReg = $objSWbemServices->Get("StdRegProv");
+
 if ( !$objReg ) {
     print 'sa race de objReg';
     exit;
