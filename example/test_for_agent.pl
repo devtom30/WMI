@@ -17,9 +17,18 @@ my $service = TheWin32::_connectToService(
     $pass,
     "root\\default"
 );
-if ($service) {
-    print 'service ok ';
-} else {
-    print 'sa race';
+if (!$service) {
+    print 'sa race de service';
+    exit;
 }
+
+print 'service ok ';
 print "\n";
+
+my $objReg = $service->Get("StdRegProv");
+if (!$objReg) {
+    print 'sa race de objReg';
+    exit;
+}
+print 'objReg ok' . "\n";
+
