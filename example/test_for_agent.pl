@@ -3,7 +3,7 @@ use strict;
 use warnings FATAL => 'all';
 
 
-use Win32;
+use TheWin32;
 
 
 my $computer = $ARGV[2];
