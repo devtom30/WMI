@@ -46,8 +46,8 @@ if ($objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e)) {
     print 'ok'."\n";
 }
 
-my $p = "HARDWARE\\Description\\System\\BIOS";
-my $e = "BIOSReleaseDate";
+$p = "HARDWARE\\Description\\System\\BIOS";
+$e = "BIOSReleaseDate";
 print $p . ' - ' . $e . ' ? ';
 if ($objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e)) {
     print 'ok'."\n";
