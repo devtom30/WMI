@@ -3,6 +3,7 @@ use strict;
 use warnings FATAL => 'all';
 
 use Win32::OLE;
+use Win32::OLE::Variant;
 
 use TheWin32;
 
@@ -34,7 +35,7 @@ print 'objReg ok' . "\n";
 
 my $strKeyPath = "Hardware/Description/System/BIOS";
 my $strEntryName = "BIOSReleaseDate";
-my $result = Variant(VT_BYREF|VT_BSTR,0);
+my $result = Variant(VT_BYREF()|VT_BSTR(),0);
 my $strValue = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
 print 'result : ' . $result;
 
