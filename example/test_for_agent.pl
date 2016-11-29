@@ -63,7 +63,7 @@ sub tryAllPath {
     my $entry;
 
     while (@path) {
-        if ($entry =~ /[a-z]+/) {
+        if ($entry && $entry =~ /[a-z]+/) {
             $entry = uc $entry;
         } else {
             $entry = shift @path;
