@@ -31,8 +31,6 @@ use FusionInventory::Agent::Tools::Network;
 
 my $localCodepage;
 
-$Win32::VERSION = 'alorrrrrrs';
-
 our @EXPORT = qw(
     is64bit
     encodeFromRegistry
