@@ -36,6 +36,14 @@ print 'objReg ok' . "\n";
 my $strKeyPath = "HARDWARE/Description/System/BIOS";
 my $strEntryName = "BIOSReleaseDate";
 my $result = Variant(VT_BYREF()|VT_BSTR(),0);
+my $strValue = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName);
+if (!$strValue || $strValue != 0) {
+    print 'usciamo di qua subito' . "\n";
+    exit;
+}
+print 'strValue : ' . $strValue;
+
 my $strValue = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPath, $strEntryName, $result);
+
 print 'result : ' . $result;
 
