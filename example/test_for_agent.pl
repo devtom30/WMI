@@ -39,6 +39,10 @@ print '$path is : ' . $path . "\n";
 print 'trying all paths ' . "\n";
 tryAllPath($objReg, $path);
 
+my $p = "HARDWARE";
+my $e = " Description";
+exit unless $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e);
+
 my $strKeyPath = "HARDWARE/Description/System/BIOS";
 $strKeyPath =~ s/\//\\\\/g;
 print '$strKeyPath is : ' . $strKeyPath . "\n";
@@ -72,8 +76,8 @@ sub tryAllPath {
             print 'good for ' . $pathToEntry . ' ' . $entry . "\n";
             $pathToEntry .= "\\" . $entry;
         } else {
-            next if ($entry && $entry =~ /[a-z]+/);
             print 'foirade for ' . $pathToEntry . ' ' . $entry . "\n";
+            next if ($entry && $entry =~ /[a-z]+/);
             last;
         }
     }
@@ -83,7 +87,7 @@ sub tryPath {
     my ($objReg, $path, $entry) = @_;
 
 
-    my $strValue = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $path, $entry);
+    my $strValue = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $path, $entry);
 
     my $ret;
     if (!$strValue || $strValue != 0) {
