@@ -40,8 +40,19 @@ print 'trying all paths ' . "\n";
 tryAllPath($objReg, $path);
 
 my $p = "HARDWARE";
-my $e = " Description";
-exit unless $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e);
+my $e = "Description";
+print $p . ' - ' . $e . ' ? ';
+if ($objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e)) {
+    print 'ok'."\n";
+}
+
+my $p = "HARDWARE\\Description\\System\\BIOS";
+my $e = "BIOSReleaseDate";
+print $p . ' - ' . $e . ' ? ';
+if ($objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $p, $e)) {
+    print 'ok'."\n";
+}
+
 
 my $strKeyPath = "HARDWARE/Description/System/BIOS";
 $strKeyPath =~ s/\//\\\\/g;
