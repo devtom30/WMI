@@ -187,7 +187,7 @@ sub tryPath {
     my ( $objReg, $path, $entry ) = @_;
 
     my $strValue =
-      $objReg->EnumKey( $Win32::Registry::HKEY_LOCAL_MACHINE, $path, $entry );
+      $objReg->EnumKey( $Win32::Registry::HKEY_LOCAL_MACHINE, $path . '\\' . $entry );
 
     my $ret;
     if ( !$strValue || $strValue != 0 ) {
