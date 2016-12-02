@@ -4,7 +4,7 @@ use warnings FATAL => 'all';
 
 use Win32::OLE;
 use Win32::OLE::Variant;
-use Win32::TieRegistry;
+use Win32::Registry;
 
 use TheWin32;
 
@@ -32,7 +32,7 @@ my $objReg = $service->Get("StdRegProv");
 my $strKeyPathT = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
 my $strEntryNameT = "ProcessorNameString";
 my $resultT = Variant(VT_BYREF()|VT_BSTR(),0);
-my $strValueT = $objReg->GetStringValue('LMachine', $strKeyPathT, $strEntryNameT, $resultT);
+my $strValueT = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPathT, $strEntryNameT, $resultT);
 print '>>>>>>>>>>>>>>>>>>>>> TEMOIN' . "\n";
 print 'strValue : ' . $strValueT;
 print "\n";
