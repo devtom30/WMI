@@ -32,7 +32,7 @@ my $objReg = $service->Get("StdRegProv");
 my $strKeyPathT = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
 my $strEntryNameT = "ProcessorNameString";
 my $resultT = Variant(VT_BYREF()|VT_BSTR(),0);
-my $strValueT = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $strKeyPathT, $strEntryNameT, $resultT);
+my $strValueT = $objReg->GetStringValue(&HKEY_LOCAL_MACHINE, $strKeyPathT, $strEntryNameT, $resultT);
 print '>>>>>>>>>>>>>>>>>>>>> TEMOIN' . "\n";
 print 'strValue : ' . $strValueT;
 print "\n";
