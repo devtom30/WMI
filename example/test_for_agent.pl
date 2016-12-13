@@ -37,7 +37,7 @@ my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 my $return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr);
 
 exit unless defined $return && $return == 0;
-$ddd = Data::Dumper->new([$arr]);
+my $ddd = Data::Dumper->new([$arr]);
 print $ddd->Dump;
 
 my $subKeys = [];
@@ -45,7 +45,7 @@ foreach my $item ( in( $arr->Value ) ) {
     next unless $item;
     push @$subKeys, sprintf $item;
 } # end foreach
-my $ddd = Data::Dumper->new([$subKeys]);
+$ddd = Data::Dumper->new([$subKeys]);
 print $ddd->Dump;
 
 $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
