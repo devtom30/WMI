@@ -37,6 +37,8 @@ my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 my $return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr);
 
 exit unless defined $return && $return == 0;
+$ddd = Data::Dumper->new([$arr]);
+print $ddd->Dump;
 
 my $subKeys = [];
 foreach my $item ( in( $arr->Value ) ) {
@@ -57,6 +59,8 @@ $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 $return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr);
 
 exit unless defined $return && $return == 0;
+$ddd = Data::Dumper->new([$arr]);
+print $ddd->Dump;
 
 $subKeys = [];
 foreach my $item ( in( $arr->Value ) ) {
