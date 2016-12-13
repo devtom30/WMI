@@ -2,7 +2,7 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Win32::OLE;
+use Win32::OLE qw/in/;
 use Win32::OLE::Variant;
 use Win32::Registry;
 
