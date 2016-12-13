@@ -24,6 +24,23 @@ print "\n";
 
 my $objReg = $service->Get("StdRegProv");
 
+
+my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+# Do not use Die for this method
+my %params = (
+    objReg => $objReg,
+    keyName => 'SYSTEM/CurrentControlSet/Control/Network/{4D36E972-E325-11CE-BFC1-08002BE10318}',
+);
+my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
+my $return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr);
+return unless defined $return && $return == 0;
+
+my $subKeys = [];
+foreach my $item ( in( $arr->Value ) ) {
+    next unless $item;
+    push @$subKeys, $item;
+} # end foreach
+
 my $res = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_DATE(), 0);
 my $kn = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion";
 my $kv = "InstallDate";
