@@ -42,6 +42,8 @@ foreach my $item ( in( $arr->Value ) ) {
     next unless $item;
     push @$subKeys, sprintf $item;
 } # end foreach
+my $ddd = Data::Dumper->new([$subKeys]);
+print $ddd->Dump;
 
 my $res = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_DATE(), 0);
 my $kn = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion";
