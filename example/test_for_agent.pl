@@ -72,7 +72,6 @@ tryAllPath( $objReg, $path );
 my $p;
 my $e;
 my $result;
-my $res;
 
 #my $p = "HARDWARE";
 #my $e = "Description";
