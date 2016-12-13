@@ -5,6 +5,7 @@ use warnings FATAL => 'all';
 use Win32::OLE qw/in/;
 use Win32::OLE::Variant;
 use Win32::Registry;
+use Data::Dumper;
 
 use TheWin32;
 
