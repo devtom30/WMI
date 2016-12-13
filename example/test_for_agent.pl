@@ -31,8 +31,10 @@ my %params = (
     objReg => $objReg,
     keyName => 'SYSTEM/CurrentControlSet/Control/Network/{4D36E972-E325-11CE-BFC1-08002BE10318}',
 );
+$params{keyName} =~ tr#/#\\#;
 my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 my $return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr);
+
 exit unless defined $return && $return == 0;
 
 my $subKeys = [];
