@@ -40,7 +40,7 @@ exit unless defined $return && $return == 0;
 my $subKeys = [];
 foreach my $item ( in( $arr->Value ) ) {
     next unless $item;
-    push @$subKeys, $item;
+    push @$subKeys, sprintf $item;
 } # end foreach
 
 my $res = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_DATE(), 0);
