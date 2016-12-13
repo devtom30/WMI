@@ -33,7 +33,7 @@ my %params = (
 );
 my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 my $return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr);
-return unless defined $return && $return == 0;
+exit unless defined $return && $return == 0;
 
 my $subKeys = [];
 foreach my $item ( in( $arr->Value ) ) {
