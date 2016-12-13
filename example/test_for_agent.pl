@@ -46,6 +46,26 @@ foreach my $item ( in( $arr->Value ) ) {
 my $ddd = Data::Dumper->new([$subKeys]);
 print $ddd->Dump;
 
+$arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+# Do not use Die for this method
+%params = (
+    objReg => $objReg,
+    keyName => 'SYSTEM/CurrentControlSet/Control/Network/{4D36E972-E325-11CE-BFC1-08002BE10318}/Descriptions',
+);
+$params{keyName} =~ tr#/#\\#;
+$hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
+$return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr);
+
+exit unless defined $return && $return == 0;
+
+$subKeys = [];
+foreach my $item ( in( $arr->Value ) ) {
+    next unless $item;
+    push @$subKeys, sprintf $item;
+} # end foreach
+$ddd = Data::Dumper->new([$subKeys]);
+print $ddd->Dump;
+
 my $res = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_DATE(), 0);
 my $kn = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion";
 my $kv = "InstallDate";
