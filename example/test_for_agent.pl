@@ -44,6 +44,8 @@ my $subKeys = [];
 foreach my $item ( in( $arr->Value ) ) {
     next unless $item;
     push @$subKeys, sprintf $item;
+    $ddd = Data::Dumper->new([$item]);
+    print $ddd->Dump;
 } # end foreach
 $ddd = Data::Dumper->new([$subKeys]);
 print $ddd->Dump;
