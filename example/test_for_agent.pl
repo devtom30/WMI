@@ -56,7 +56,7 @@ $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::V
 );
 $params{keyName} =~ tr#/#\\#;
 $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
-$return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr);
+$return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr) or warn('uh');
 
 exit unless defined $return && $return == 0;
 $ddd = Data::Dumper->new([$arr]);
