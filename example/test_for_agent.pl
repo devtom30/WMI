@@ -25,7 +25,7 @@ print "\n";
 my $objReg = $service->Get("StdRegProv");
 
 my $res = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_DATE(), 0);
-my $kn = "SOFTWARE/Microsoft/Windows NT/CurrentVersion";
+my $kn = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion";
 my $kv = "InstallDate";
 my $ret = $objReg->GetDWORDValue($Win32::Registry::HKEY_LOCAL_MACHINE, $kn, $kv, $res);
 print '$ret : ' . $ret . "\n";
