@@ -31,14 +31,16 @@ my $func = sub {
     print 'mouarf';
 };
 eval {
-    my $retretret = $objReg->GetStringValue($hkey, "SYSTEM\\CurrentControlSet\\Control\\Network",
-        "et_alors", $rrr);
-    print 'et alors';
+    my $strKeyPathT = "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\";
+    my $strEntryNameT = "ProcessorNameString";
+    my $retretret = $objReg->GetStringValue($hkey, "SYSTEM\\CurrentControlSet\\Control\\Network\\",
+        "ProcessorNameString", $rrr);
+    print 'proc name';
 };
 &$func if $@;
 eval {
-    my $retretret = $objReg->GetStringValue($hkey, "SYSTEM\\CurrentControlSet\\Control\\Network",
-        "{4D36E972-E325-11CE-BFC1-08002BE1031}", $rrr);
+    my $retretret = $objReg->GetStringValue($hkey, "SYSTEM\\CurrentControlSet\\Control\\Network\\",
+        "{4D36E972-E325-11CE-BFC1-08002BE10318}", $rrr);
 };
 &$func if $@;
 eval {
