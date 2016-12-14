@@ -81,18 +81,18 @@ $params{keyName} =~ tr#/#\\#;
 $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 $return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr) or warn('uh');
 
-exit unless defined $return && $return == 0 && $arr;
-$ddd = Data::Dumper->new([$arr]);
-print $ddd->Dump;
+unless (defined $return && $return == 0 && $arr) {
+    $ddd = Data::Dumper->new([ $arr ]);
+    print $ddd->Dump;
 
-$subKeys = [];
-foreach my $item ( in( $arr->Value ) ) {
-    next unless $item;
-    push @$subKeys, sprintf $item;
-} # end foreach
-$ddd = Data::Dumper->new([$subKeys]);
-print $ddd->Dump;
-
+    $subKeys = [ ];
+    foreach my $item (in( $arr->Value )) {
+        next unless $item;
+        push @$subKeys, sprintf $item;
+    } # end foreach
+    $ddd = Data::Dumper->new([ $subKeys ]);
+    print $ddd->Dump;
+}
 my $res = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_DATE(), 0);
 my $kn = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion";
 my $kv = "InstallDate";
