@@ -33,6 +33,7 @@ my $func = sub {
 eval {
     my $retretret = $objReg->GetStringValue($hkey, "SYSTEM\\CurrentControlSet\\Control\\Network",
         "et_alors", $rrr);
+    print 'et alors';
 };
 &$func if $@;
 eval {
