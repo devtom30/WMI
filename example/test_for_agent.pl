@@ -81,7 +81,7 @@ $params{keyName} =~ tr#/#\\#;
 $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 $return = $params{objReg}->EnumKey($hkey, $params{keyName}, $arr) or warn('uh');
 
-unless (defined $return && $return == 0 && $arr) {
+if (defined $return && $return == 0 && $arr) {
     $ddd = Data::Dumper->new([ $arr ]);
     print $ddd->Dump;
 
