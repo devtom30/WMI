@@ -25,6 +25,10 @@ print "\n";
 
 my $objReg = $service->Get("StdRegProv");
 
+my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
+
+my $retretret = $params{objReg}->GetStringValue($hkey, "SYSTEM\\CurrentControlSet\\Control\\Network", '{4D36E972-E325-11CE-BFC1-08002BE10318}', $rrr);
+
 
 my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
 # Do not use Die for this method
