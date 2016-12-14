@@ -52,6 +52,12 @@ eval {
 eval {
     $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $retretret = $objReg->EnumValues($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\Quoi", $rrr);
+    print 'EnumValues Quoi (unexisting keyName) : ' . $retretret . "\n";
+};
+&$func if $@;
+eval {
+    $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+    my $retretret = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\Quoi", $rrr);
     print 'EnumKey Quoi (unexisting keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
