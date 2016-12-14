@@ -40,14 +40,14 @@ my $func = sub {
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $retretret = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0", $rrr);
-    print 'enumKey proc name';
+    print 'enumKey proc name : ' . $retretret . "\n";
 };
 &$func if $@;
 eval {
     $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );    my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
     my $retretret = $objReg->EnumValues($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
-        "enumValues ProcessorNameStringUh", $rrr);
-    print 'proc name';
+        "ProcessorNameStringUh", $rrr);
+    print 'enumValues proc name : ' . $retretret . "\n";
 };
 &$func if $@;
 #eval {
