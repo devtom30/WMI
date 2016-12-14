@@ -27,7 +27,14 @@ my $objReg = $service->Get("StdRegProv");
 my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 
 my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
-my $retretret = $objReg->GetStringValue($hkey, "SYSTEM\\CurrentControlSet\\Control\\Network", '{4D36E972-E325-11CE-BFC1-08002BE10318}', $rrr) or warn('aïe');
+my $func = sub {
+    print 'mouarf';
+};
+eval {
+    my $retretret = $objReg->GetStringValue($hkey, "SYSTEM\\CurrentControlSet\\Control\\Network",
+        '{4D36E972-E325-11CE-BFC1-08002BE10318}', $rrr);
+};
+&$func if $@;
 
 
 my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
