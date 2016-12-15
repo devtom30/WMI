@@ -100,6 +100,7 @@ eval {
 &$func if $@;
 #print 'error message : ' . Win32::OLE->LastError();
 print 'error message : ' . Win32::OLE->LastError;
+print 'ref objReg : ' . ref($objReg) . "\n";
 #my $dddd = Data::Dumper->new([[$objReg]]);
 #print $dddd->Dump;
 
