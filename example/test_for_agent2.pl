@@ -56,7 +56,7 @@ my $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-
 #    print O 'avant eval' . "\n";
 eval {
     my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
-    $return = $objReg->EnumKey($hkey, $keyName, $arr);
+    $return = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $keyName, $arr);
     if (defined $return && $return == 0 && $arr) {
         $subKeys = [ ];
         foreach my $item (in( $arr->Value )) {
