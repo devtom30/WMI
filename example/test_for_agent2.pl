@@ -109,8 +109,8 @@ eval {
         print 'return : ' . $return . "\n";
         $subKeys = [ ];
         foreach my $item (in( $arr->Value )) {
-            next unless $item;
-            push @$subKeys, $item;
+#            next unless $item;
+            push @$subKeys, "$item";
         }
     }
     print $return;
