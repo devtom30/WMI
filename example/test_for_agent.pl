@@ -38,6 +38,7 @@ my $func = sub {
     print $str . "\n" if $str;
     print 'mouarf' . "\n";
 };
+print 3 / 0;
 eval {
     my $truc = 6 / 0;
 };
