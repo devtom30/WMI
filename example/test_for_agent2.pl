@@ -160,7 +160,7 @@ eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumValues($hkey, $keyName, $arr1, $arr2);
-    if (defined $return && $return == 0 && $arr1 && $arr2) {
+    if (defined $return && $return == 0) {
         print 'return : ' . $return . "\n";
         $subKeys = [ ];
         foreach my $item (in( $arr1->Value )) {
