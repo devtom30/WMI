@@ -100,8 +100,8 @@ eval {
 &$func if $@;
 #print 'error message : ' . Win32::OLE->LastError();
 print 'error message : ' . Win32::OLE->LastError;
-my $dddd = Data::Dumper->new([[$objReg]]);
-print $dddd->Dump;
+#my $dddd = Data::Dumper->new([[$objReg]]);
+#print $dddd->Dump;
 
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
