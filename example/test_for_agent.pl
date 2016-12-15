@@ -25,6 +25,7 @@ print 'service ok ';
 print "\n";
 
 my $objReg = $service->Get("StdRegProv");
+print Dumper($objReg);
 my $dd2 = Data::Dumper->new([$objReg]);
 print $dd2->Dump;
 
