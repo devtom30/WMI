@@ -67,7 +67,11 @@ eval {
 &$func2 if $@;
 my $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
+sleep 3;
 print Win32::OLE->LastError;
+sleep 3;
+print Win32::OLE->LastError;
+
 print 'EnumValues ' . $keyName . "\n";
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
