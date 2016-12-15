@@ -28,8 +28,14 @@ my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 
 my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
 my $func = sub {
+    my $str = shift;
+    print $str . "\n" if $str;
     print 'mouarf' . "\n";
 };
+eval {
+    my $truc = 6 / 0;
+};
+&$func('division par zéro') if $@;
 #eval {
 #    my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
 #    my $retretret = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -43,30 +49,35 @@ eval {
     print 'enumKey proc name : ' . $retretret . "\n";
 };
 &$func if $@;
+
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $retretret = $objReg->EnumValues($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0", $rrr);
     print 'enumValues proc name : ' . $retretret . "\n";
 };
 &$func if $@;
+
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $retretret = $objReg->EnumValues($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\Quoi", $rrr);
     print 'EnumValues Quoi (unexisting keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $retretret = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\Quoi", $rrr);
     print 'EnumKey Quoi (unexisting keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $retretret = $objReg->EnumValues($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessorAlors\\0\\ProcessorNameString", $rrr);
     print 'EnumValues Quoi (unexisting keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $retretret = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessorAlors\\0\\ProcessorNameString", $rrr);
@@ -91,7 +102,7 @@ eval {
     my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
     my $retretret = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
         "Quoi", $rrr);
-    print 'Alors Quoi (unexisting keyName) : ' . $retretret . "\n";
+    print 'Quoi (unexisting keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
 eval {
