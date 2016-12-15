@@ -170,6 +170,12 @@ eval {
             $subKeys = [] unless defined $subKeys;
             push @$subKeys, $item;
         }
+        push @$subKeys, 'types';
+        foreach my $item (in( $arr2->Value )) {
+            next unless $item;
+            $subKeys = [] unless defined $subKeys;
+            push @$subKeys, $item;
+        }
     }
     print $return;
     print "\n";
