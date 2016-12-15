@@ -31,6 +31,10 @@ my $objReg = $service->Get("StdRegProv");
 
 my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 
+my $func2 = sub {
+    print  'eval is fatal error !!!' . "\n";
+};
+my $return;
 my $subKeys;
 $subKeys = undef;
 eval {
@@ -87,10 +91,7 @@ print "\n";
 
 
 
-my $func2 = sub {
-    print  'eval is fatal error !!!' . "\n";
-};
-my $return;
+
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
