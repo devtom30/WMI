@@ -1,8 +1,8 @@
-#!/usr/bin/perl
+#!\\usr\\bin\\perl
 use strict;
 use warnings FATAL => 'all';
 
-use Win32::OLE qw/in/;
+use Win32::OLE qw\\in\\;
 $Win32::OLE::Warn = 3;
 use Win32::OLE::Variant;
 use Win32::Registry;
@@ -43,3 +43,28 @@ eval {
 };
 &$func if $@;
 print 'error message : ' . Win32::OLE->LastError(0);
+
+my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+# Do not use Die for this method
+
+my $func2 = sub {
+    print  'eval is fatal error !!!' . "\n";
+};
+my $return;
+my $subKeys;
+my $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}";
+#    open(O, ">" . 'debug_' . time());
+#    print O 'avant eval' . "\n";
+eval {
+    $return = $objReg->EnumKey($hkey, $keyName, $arr);
+    if (defined $return && $return == 0 && $arr) {
+        $subKeys = [ ];
+        foreach my $item (in( $arr->Value )) {
+            #next unless $item;
+            push @$subKeys, $item;
+        }
+    }
+};
+&$func2 if $@;
+my $dd = Data::Dumper->new([$subKeys]);
+print $dd->Dump;
