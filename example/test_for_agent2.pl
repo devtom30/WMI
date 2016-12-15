@@ -107,30 +107,34 @@ print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
 $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}\\Descriptions";
-#    open(O, ">" . 'debug_' . time());
-#    print O 'avant eval' . "\n";
-$subKeys = [];
-eval {
-    my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
-    $return = $objReg->EnumKey($hkey, $keyName, $arr);
-    if (defined $return && $return == 0) {
-        print 'return : ' . $return . "\n";
-        $subKeys = [ ];
-        foreach my $item (in( $arr->Value )) {
-#            next unless $item;
-            push @$subKeys, "$item";
+if (2==1) {
+    #    open(O, ">" . 'debug_' . time());
+    #    print O 'avant eval' . "\n";
+    $subKeys = [ ];
+    eval {
+        my $arr = Win32::OLE::Variant->new(
+            Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF(),
+            [ 1, 1 ] );
+        $return = $objReg->EnumKey($hkey, $keyName, $arr);
+        if (defined $return && $return == 0) {
+            print 'return : '.$return."\n";
+            $subKeys = [ ];
+            foreach my $item (in( $arr->Value )) {
+                #            next unless $item;
+                push @$subKeys, "$item";
+            }
         }
-    }
-    print $return;
-    print "\n";
+        print $return;
+        print "\n";
 
-};
-&$func2 if $@;
-$dd = Data::Dumper->new([$subKeys]);
-print 'EnumKey' . "\n";
-print $dd->Dump;
-print 'error message : ' . Win32::OLE->LastError(0);
-print "\n";
+    };
+    &$func2 if $@;
+    $dd = Data::Dumper->new([ $subKeys ]);
+    print 'EnumKey'."\n";
+    print $dd->Dump;
+    print 'error message : '.Win32::OLE->LastError(0);
+    print "\n";
+}
 $subKeys = [];
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
