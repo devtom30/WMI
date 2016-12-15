@@ -142,3 +142,19 @@ $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
+
+
+my $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
+
+my $sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
+
+# Do not use Die for this method
+my $iRC = $objReg->EnumKey($HKLM,
+    $sPath, $arr); # or die "Cannot fetch registry key :",
+Win32::OLE->LastError;
+
+foreach my $item ( in( $arr->Value ) ) {
+    print "$item \n";
+} # end foreach
+
+
