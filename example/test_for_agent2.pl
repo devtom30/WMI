@@ -66,6 +66,8 @@ eval {
             push @$subKeys, $item;
         }
     }
+    print $return;
+    print "\n";
 };
 &$func2 if $@;
 my $dd = Data::Dumper->new([$subKeys]);
@@ -85,6 +87,9 @@ eval {
             push @$subKeys, $item;
         }
     }
+    print $return;
+    print "\n";
+
 };
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
@@ -106,6 +111,9 @@ eval {
             push @$subKeys, $item;
         }
     }
+    print $return;
+    print "\n";
+
 };
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
@@ -125,6 +133,9 @@ eval {
             push @$subKeys, $item;
         }
     }
+    print $return;
+    print "\n";
+
 };
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
