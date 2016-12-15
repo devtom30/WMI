@@ -44,7 +44,6 @@ eval {
 &$func if $@;
 print 'error message : ' . Win32::OLE->LastError(0);
 
-my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
 # Do not use Die for this method
 
 my $func2 = sub {
@@ -56,6 +55,7 @@ my $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-
 #    open(O, ">" . 'debug_' . time());
 #    print O 'avant eval' . "\n";
 eval {
+    my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumKey($hkey, $keyName, $arr);
     if (defined $return && $return == 0 && $arr) {
         $subKeys = [ ];
