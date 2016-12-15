@@ -31,6 +31,7 @@ my $func = sub {
     my $str = shift;
     print $str . "\n" if $str;
     print 'mouarf' . "\n";
+    print Win32::OLE->LastError();
 };
 eval {
     my $truc = 6 / 0;
