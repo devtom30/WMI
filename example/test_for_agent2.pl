@@ -43,6 +43,7 @@ eval {
 };
 &$func if $@;
 print 'error message : ' . Win32::OLE->LastError(0);
+print "\n";
 
 # Do not use Die for this method
 
