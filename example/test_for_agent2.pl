@@ -63,7 +63,7 @@ eval {
     $return = $objReg->EnumKey($HKLM, $keyName, $arr);
     if (defined $return && $return == 0) {
         print 'return : ' . $return . "\n";
-        $subKeys = [ ];
+        $subKeys = [];
         foreach my $item (in( $arr->Value )) {
             next unless $item;
             push @$subKeys, $item;
@@ -85,8 +85,13 @@ eval {
     $return = $objReg->EnumValues($hkey, $keyName, $arr1, $arr2);
     if (defined $return && $return == 0 && $arr1 && $arr2) {
         print 'return : ' . $return . "\n";
-        $subKeys = [ ];
+        $subKeys = [];
         foreach my $item (in( $arr1->Value )) {
+            next unless $item;
+            push @$subKeys, $item;
+        }
+        push @$subKeys, 'types';
+        foreach my $item (in( $arr2->Value )) {
             next unless $item;
             push @$subKeys, $item;
         }
