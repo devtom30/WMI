@@ -25,6 +25,7 @@ print 'service ok ';
 print "\n";
 
 my $objReg = $service->Get("StdRegProv");
+$objReg->Option(Warn => 3);
 my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 
 my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
