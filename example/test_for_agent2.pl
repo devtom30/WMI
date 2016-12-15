@@ -78,7 +78,7 @@ sleep 3;
 print Win32::OLE->LastError;
 
 print 'EnumValues ' . $keyName . "\n";
-print 'error message : ' . Win32::OLE->LastError(0);
+print 'error message : ' . Win32::OLE->LastError();
 print "\n";
 
 
@@ -95,7 +95,7 @@ eval {
     print 'ProcessorNameString (unexisting keyName) : ' . $retretret . ' ' . sprintf($rrr) . "\n";
 };
 &$func if $@;
-print 'GetStringValue error message : ' . Win32::OLE->LastError(0);
+print 'GetStringValue error message : ' . Win32::OLE->LastError();
 print "\n";
 
 
@@ -116,7 +116,7 @@ eval {
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 print Win32::OLE->LastError;
-print 'GetStringValue error message : ' . Win32::OLE->LastError(0);
+print 'GetStringValue error message : ' . Win32::OLE->LastError();
 print "\n";
 
 $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}";
@@ -142,7 +142,7 @@ $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 print Win32::OLE->LastError;
 print 'EnumKey ' . $keyName . "\n";
-print 'error message : ' . Win32::OLE->LastError(0);
+print 'error message : ' . Win32::OLE->LastError();
 print "\n";
 
 $subKeys = undef;
@@ -177,7 +177,7 @@ $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 print Win32::OLE->LastError;
 print 'EnumValues ' . $keyName . "\n";
-print 'error message : ' . Win32::OLE->LastError(0);
+print 'error message : ' . Win32::OLE->LastError();
 print "\n";
 
 $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}\\Descriptions";
@@ -208,7 +208,7 @@ if (2==1) {
     print 'EnumKey ' . $keyName . "\n";
 
     print $dd->Dump;
-    print 'error message : '.Win32::OLE->LastError(0);
+    print 'error message : '.Win32::OLE->LastError();
     print "\n";
 }
 $subKeys = undef;
@@ -240,7 +240,7 @@ $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 print Win32::OLE->LastError;
 print 'EnumValues ' . $keyName . "\n";
-print 'error message : ' . Win32::OLE->LastError(0);
+print 'error message : ' . Win32::OLE->LastError();
 print "\n";
 
 my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -283,7 +283,7 @@ eval {
 $dd = Data::Dumper->new([$subKeys]);
 print 'EnumKey' . $keyName . "\n";
 print $dd->Dump;
-print 'error message : ' . Win32::OLE->LastError(0);
+print 'error message : ' . Win32::OLE->LastError();
 print "\n";
 $subKeys = undef;
 eval {
@@ -307,5 +307,5 @@ eval {
 $dd = Data::Dumper->new([$subKeys]);
 print 'EnumValues ' . $keyName . "\n";
 print $dd->Dump;
-print 'error message : ' . Win32::OLE->LastError(0);
+print 'error message : ' . Win32::OLE->LastError();
 print "\n";
