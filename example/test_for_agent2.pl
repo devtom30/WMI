@@ -91,7 +91,7 @@ eval {
     print "\n";
 };
 &$func2 if $@;
-my $dd = Data::Dumper->new([$subKeys]);
+$dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 print 'EnumKey ' . $keyName . "\n";
 print 'error message : ' . Win32::OLE->LastError(0);
