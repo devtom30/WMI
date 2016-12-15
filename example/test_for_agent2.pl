@@ -102,6 +102,7 @@ print "\n";
 $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}\\Descriptions";
 #    open(O, ">" . 'debug_' . time());
 #    print O 'avant eval' . "\n";
+$subKeys = [];
 eval {
     my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumKey($hkey, $keyName, $arr);
