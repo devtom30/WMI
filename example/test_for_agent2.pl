@@ -145,10 +145,11 @@ print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
-my $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
+my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+#my $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
 
-#my $sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
-my $sPath = "SYSTEM\\CurrentControlSet\\Control\\Network";
+my $sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
+#my $sPath = "SYSTEM\\CurrentControlSet\\Control\\Network";
 
 # Do not use Die for this method
 my $iRC = $objReg->EnumKey($HKLM,
