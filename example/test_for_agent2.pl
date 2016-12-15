@@ -147,7 +147,8 @@ print "\n";
 
 my $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
 
-my $sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
+#my $sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
+my $sPath = "SYSTEM\\CurrentControlSet\\Control\\Network";
 
 # Do not use Die for this method
 my $iRC = $objReg->EnumKey($HKLM,
