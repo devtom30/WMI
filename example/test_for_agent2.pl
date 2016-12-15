@@ -84,7 +84,7 @@ eval {
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 
-$keyName = "SYSTEM\\CurrentControlSet\\Control\\Network";
+$keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\";
 #    open(O, ">" . 'debug_' . time());
 #    print O 'avant eval' . "\n";
 eval {
