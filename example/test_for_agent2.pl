@@ -62,7 +62,6 @@ eval {
     my $retretret = $objReg->EnumValues($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
         , $arr1, $arr2);
     foreach my $item (in( $arr1->Value )) {
-        next unless $item;
         push @$subKeys, $item;
     }
 };
