@@ -25,7 +25,6 @@ print 'service ok ';
 print "\n";
 
 my $objReg = $service->Get("StdRegProv");
-$objReg->Option(Warn => 3);
 my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 
 my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
@@ -103,8 +102,8 @@ eval {
 print 'error message : ' . Win32::OLE->LastError;
 print 'ref objReg : ' . ref($objReg) . "\n";
 print $objReg->LastError(0) . "\n";
-#my $dddd = Data::Dumper->new([[$objReg]]);
-#print $dddd->Dump;
+my $dddd = Data::Dumper->new([$service]);
+print $dddd->Dump;
 
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
