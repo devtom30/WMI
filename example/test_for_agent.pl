@@ -101,7 +101,7 @@ eval {
 #print 'error message : ' . Win32::OLE->LastError();
 print 'error message : ' . Win32::OLE->LastError;
 print 'ref objReg : ' . ref($objReg) . "\n";
-print $objReg->LastError(0) . "\n";
+print $$service->LastError(0) . "\n";
 my $dddd = Data::Dumper->new([$service]);
 print $dddd->Dump;
 
