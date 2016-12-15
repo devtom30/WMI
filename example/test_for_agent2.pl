@@ -11,6 +11,8 @@ use Data::Structure::Util qw( unbless );
 
 use TheWin32;
 
+my $HKLM = 0x80000002;
+
 my $computer = $ARGV[2];
 my $user     = $ARGV[0];
 my $pass     = $ARGV[1];
@@ -57,7 +59,7 @@ my $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-
 #    print O 'avant eval' . "\n";
 eval {
     my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
-    $return = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, $keyName, $arr);
+    $return = $objReg->EnumKey($HKLM, $keyName, $arr);
     if (defined $return && $return == 0 && $arr) {
         print 'return : ' . $return . "\n";
         $subKeys = [ ];
@@ -102,7 +104,7 @@ $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network";
 #    print O 'avant eval' . "\n";
 eval {
     my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
-    $return = $objReg->EnumKey($hkey, $keyName, $arr);
+    $return = $objReg->EnumKey($HKLM, $keyName, $arr);
     if (defined $return && $return == 0 && $arr) {
         print 'return : ' . $return . "\n";
         $subKeys = [ ];
@@ -143,7 +145,6 @@ print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
-my $HKLM = 0x80000002;
 my $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
 
 my $sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
