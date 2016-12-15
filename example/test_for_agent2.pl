@@ -65,7 +65,7 @@ eval {
 
 };
 &$func2 if $@;
-$dd = Data::Dumper->new([$subKeys]);
+my $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 print Win32::OLE->LastError;
 print 'EnumValues ' . $keyName . "\n";
@@ -104,7 +104,7 @@ eval {
     }
 };
 &$func if $@;
-my $dd = Data::Dumper->new([$subKeys]);
+$dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 print Win32::OLE->LastError;
 print 'GetStringValue error message : ' . Win32::OLE->LastError(0);
