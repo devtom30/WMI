@@ -70,6 +70,8 @@ eval {
 &$func2 if $@;
 my $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
+print 'error message : ' . Win32::OLE->LastError(0);
+print "\n";
 
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -87,6 +89,8 @@ eval {
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
+print 'error message : ' . Win32::OLE->LastError(0);
+print "\n";
 
 $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network";
 #    open(O, ">" . 'debug_' . time());
@@ -106,6 +110,8 @@ eval {
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
+print 'error message : ' . Win32::OLE->LastError(0);
+print "\n";
 
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -123,4 +129,5 @@ eval {
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
-
+print 'error message : ' . Win32::OLE->LastError(0);
+print "\n";
