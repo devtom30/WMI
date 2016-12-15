@@ -24,6 +24,8 @@ if ( !$service ) {
     exit;
 }
 
+Win32::OLE->Option(Warn => 3);
+
 print 'service ok ';
 print "\n";
 
@@ -34,6 +36,7 @@ my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 my $func2 = sub {
     print  'eval is fatal error !!!' . "\n";
 };
+
 my $return;
 my $subKeys;
 $subKeys = undef;
