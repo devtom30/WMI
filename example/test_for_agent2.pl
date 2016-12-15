@@ -83,3 +83,37 @@ eval {
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
+
+$keyName = "SYSTEM\\CurrentControlSet\\Control\\Network";
+#    open(O, ">" . 'debug_' . time());
+#    print O 'avant eval' . "\n";
+eval {
+    my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+    $return = $objReg->EnumKey($hkey, $keyName, $arr);
+    if (defined $return && $return == 0 && $arr) {
+        $subKeys = [ ];
+        foreach my $item (in( $arr->Value )) {
+            next unless $item;
+            push @$subKeys, $item;
+        }
+    }
+};
+&$func2 if $@;
+my $dd = Data::Dumper->new([$subKeys]);
+print $dd->Dump;
+
+eval {
+    my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+    $return = $objReg->EnumValues($hkey, $keyName, $arr);
+    if (defined $return && $return == 0 && $arr) {
+        $subKeys = [ ];
+        foreach my $item (in( $arr->Value )) {
+            next unless $item;
+            push @$subKeys, $item;
+        }
+    }
+};
+&$func2 if $@;
+$dd = Data::Dumper->new([$subKeys]);
+print $dd->Dump;
+
