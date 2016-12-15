@@ -45,7 +45,7 @@ eval {
     #    my $err = sprintf(Win32::OLE->LastError);
     #    print '$err ' . $err . "\n";
     Win32::OLE->LastError;
-    if (defined $return && $return == 0) {
+    if (0 && defined $return && $return == 0) {
         print 'return : ' . $return . "\n";
 
         foreach my $item (in( $arr1->Value )) {
