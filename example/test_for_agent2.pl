@@ -99,7 +99,7 @@ eval {
     }
 };
 &$func2 if $@;
-my $dd = Data::Dumper->new([$subKeys]);
+$dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 
 eval {
