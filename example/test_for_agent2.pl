@@ -68,7 +68,7 @@ eval {
 &$func if $@;
 my $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
-Win32::OLE->LastError;
+print Win32::OLE->LastError;
 print 'GetStringValue error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
@@ -93,7 +93,7 @@ eval {
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
-Win32::OLE->LastError;
+print Win32::OLE->LastError;
 print 'EnumKey ' . $keyName . "\n";
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
@@ -125,7 +125,7 @@ eval {
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
-Win32::OLE->LastError;
+print Win32::OLE->LastError;
 print 'EnumValues ' . $keyName . "\n";
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
@@ -154,7 +154,7 @@ if (2==1) {
     };
     &$func2 if $@;
     $dd = Data::Dumper->new([ $subKeys ]);
-    Win32::OLE->LastError;
+    print Win32::OLE->LastError;
     print 'EnumKey ' . $keyName . "\n";
 
     print $dd->Dump;
@@ -188,7 +188,7 @@ eval {
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
-Win32::OLE->LastError;
+print Win32::OLE->LastError;
 print 'EnumValues ' . $keyName . "\n";
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
@@ -202,7 +202,7 @@ my $sPath = "SYSTEM\\CurrentControlSet\\Control\\Network";
 # Do not use Die for this method
 my $iRC = $objReg->EnumKey($HKLM,
     $sPath, $arr); # or die "Cannot fetch registry key :",
-Win32::OLE->LastError;
+print Win32::OLE->LastError;
 
 foreach my $item ( in( $arr->Value ) ) {
     print "$item \n";
