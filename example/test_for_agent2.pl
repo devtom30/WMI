@@ -60,7 +60,7 @@ eval {
     if (defined $return && $return == 0 && $arr) {
         $subKeys = [ ];
         foreach my $item (in( $arr->Value )) {
-            #next unless $item;
+            next unless $item;
             push @$subKeys, $item;
         }
     }
