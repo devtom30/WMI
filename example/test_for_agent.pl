@@ -31,7 +31,6 @@ my $func = sub {
     my $str = shift;
     print $str . "\n" if $str;
     print 'mouarf' . "\n";
-    print Win32::OLE->LastError();
 };
 eval {
     my $truc = 6 / 0;
@@ -50,6 +49,7 @@ eval {
     print 'enumKey proc name : ' . $retretret . "\n";
 };
 &$func if $@;
+print Win32::OLE->LastError();
 
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -57,6 +57,7 @@ eval {
     print 'enumValues proc name : ' . $retretret . "\n";
 };
 &$func if $@;
+print Win32::OLE->LastError();
 
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -64,6 +65,7 @@ eval {
     print 'EnumValues Quoi (unexisting keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+print Win32::OLE->LastError();
 
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -71,6 +73,7 @@ eval {
     print 'EnumKey Quoi (unexisting keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+print Win32::OLE->LastError();
 
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -78,6 +81,7 @@ eval {
     print 'EnumValues Quoi (unexisting keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+print Win32::OLE->LastError();
 
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -85,6 +89,7 @@ eval {
     print 'EnumKey Quoi (unexisting  keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+print Win32::OLE->LastError();
 
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -92,12 +97,15 @@ eval {
     print 'EnumValues (existing keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+print Win32::OLE->LastError();
+
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $retretret = $objReg->EnumKey($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString", $rrr);
     print 'EnumKey (existing  keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+print Win32::OLE->LastError();
 
 eval {
     my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
@@ -106,6 +114,8 @@ eval {
     print 'Quoi (unexisting keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+print Win32::OLE->LastError();
+
 eval {
     my $rrr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $retretret = $objReg->EnumValues($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -113,6 +123,7 @@ eval {
     print 'Alors Quoi (unexisting keyName) : ' . $retretret . "\n";
 };
 &$func if $@;
+print Win32::OLE->LastError();
 #eval {
 #    my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
 #    my $retretret = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
