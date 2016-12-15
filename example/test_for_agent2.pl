@@ -36,7 +36,7 @@ my $func = sub {
     print $str . "\n" if $str;
     print 'mouarf' . "\n";
 };
-
+$subKeys = [];
 eval {
     my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
     my $retretret = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -57,6 +57,7 @@ my $subKeys;
 my $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}";
 #    open(O, ">" . 'debug_' . time());
 #    print O 'avant eval' . "\n";
+$subKeys = [];
 eval {
     my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumKey($HKLM, $keyName, $arr);
@@ -77,6 +78,7 @@ print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
+$subKeys = [];
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -124,7 +126,7 @@ print 'EnumKey' . "\n";
 print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
-
+$subKeys = [];
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
@@ -167,6 +169,7 @@ foreach my $item ( in( $arr->Value ) ) {
 $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\";
 #    open(O, ">" . 'debug_' . time());
 #    print O 'avant eval' . "\n";
+$subKeys = [];
 eval {
     my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumKey($hkey, $keyName, $arr);
@@ -188,7 +191,7 @@ print 'EnumKey' . "\n";
 print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
-
+$subKeys = [];
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
