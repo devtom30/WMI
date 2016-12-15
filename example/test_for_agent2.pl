@@ -143,7 +143,7 @@ print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
-
+my $HKLM = 0x80000002;
 my $arr = Variant( VT_ARRAY | VT_VARIANT | VT_BYREF  , [1,1] );
 
 my $sPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
