@@ -75,7 +75,7 @@ eval {
     $return = $objReg->EnumValues($hkey, $keyName, $arr1, $arr2);
     if (defined $return && $return == 0 && $arr1 && $arr2) {
         $subKeys = [ ];
-        foreach my $item (in( $arr->Value )) {
+        foreach my $item (in( $arr1->Value )) {
             next unless $item;
             push @$subKeys, $item;
         }
@@ -93,7 +93,7 @@ eval {
     $return = $objReg->EnumKey($hkey, $keyName, $arr);
     if (defined $return && $return == 0 && $arr) {
         $subKeys = [ ];
-        foreach my $item (in( $arr1->Value )) {
+        foreach my $item (in( $arr->Value )) {
             next unless $item;
             push @$subKeys, $item;
         }
@@ -104,7 +104,7 @@ $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 
 eval {
-    mmy $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+    my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumValues($hkey, $keyName, $arr1, $arr2);
     if (defined $return && $return == 0 && $arr1 && $arr2) {
