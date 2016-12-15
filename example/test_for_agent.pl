@@ -27,7 +27,7 @@ print "\n";
 
 my $objReg = $service->Get("StdRegProv");
 print 'unblessing & dumping' . "\n";
-print Dumper(unbless $objReg);
+#print Dumper(unbless $objReg);
 my $dd2 = Data::Dumper->new([$objReg]);
 print $dd2->Dump;
 print 'after dumping' . "\n";
