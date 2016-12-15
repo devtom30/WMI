@@ -105,7 +105,7 @@ $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network";
 eval {
     my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumKey($HKLM, $keyName, $arr);
-    if (defined $return && $return == 0 && $arr) {
+    if (defined $return && $return == 0) {
         print 'return : ' . $return . "\n";
         $subKeys = [ ];
         foreach my $item (in( $arr->Value )) {
