@@ -100,7 +100,7 @@ eval {
 &$func if $@;
 #print 'error message : ' . Win32::OLE->LastError();
 print 'error message : ' . Win32::OLE->LastError(0);
-my $dddd = Data::Dumper->new([$objReg]);
+my $dddd = Data::Dumper->new([\$objReg]);
 print $dddd->Dump;
 
 eval {
