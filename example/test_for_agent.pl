@@ -107,6 +107,8 @@ eval {
 };
 &$func if $@;
 print 'error message : ' . Win32::OLE->LastError(0);
+my $dddd = Data::Dumper->new([$objReg]);
+print $dddd->Dump;
 
 eval {
     my $rrr = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF()|Win32::OLE::Variant::VT_BSTR(),0);
