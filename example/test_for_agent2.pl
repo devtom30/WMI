@@ -119,6 +119,7 @@ eval {
 };
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
+print EnumKey . "\n";
 print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
@@ -141,6 +142,7 @@ eval {
 };
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
+print EnumValues . "\n";
 print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
