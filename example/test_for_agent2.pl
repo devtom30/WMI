@@ -103,8 +103,8 @@ eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumValues($hkey, $keyName, $arr1, $arr2);
-    my $err = sprintf(Win32::OLE->LastError);
-    print '$err ' . $err . "\n";
+#    my $err = sprintf(Win32::OLE->LastError);
+#    print '$err ' . $err . "\n";
 
     if (2==1 && defined $return && $return == 0) {
         print 'return : ' . $return . "\n";
