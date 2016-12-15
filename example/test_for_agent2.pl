@@ -74,15 +74,15 @@ print "\n";
 my $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}";
 #    open(O, ">" . 'debug_' . time());
 #    print O 'avant eval' . "\n";
-$subKeys = [];
+$subKeys = undef;
 eval {
     my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumKey($HKLM, $keyName, $arr);
     if (defined $return && $return == 0) {
         print 'return : ' . $return . "\n";
-        $subKeys = [];
         foreach my $item (in( $arr->Value )) {
             next unless $item;
+            $subKeys = [] unless defined $subKeys;
             push @$subKeys, $item;
         }
     }
@@ -96,21 +96,23 @@ print 'EnumKey ' . $keyName . "\n";
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
-$subKeys = [];
+$subKeys = undef;
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumValues($hkey, $keyName, $arr1, $arr2);
     if (defined $return && $return == 0 && $arr1 && $arr2) {
         print 'return : ' . $return . "\n";
-        $subKeys = [];
+
         foreach my $item (in( $arr1->Value )) {
             next unless $item;
+            $subKeys = [] unless defined $subKeys;
             push @$subKeys, $item;
         }
         push @$subKeys, 'types';
         foreach my $item (in( $arr2->Value )) {
             next unless $item;
+            $subKeys = [] unless defined $subKeys;
             push @$subKeys, $item;
         }
     }
@@ -129,7 +131,7 @@ $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC
 if (2==1) {
     #    open(O, ">" . 'debug_' . time());
     #    print O 'avant eval' . "\n";
-    $subKeys = [ ];
+    $subKeys = undef;
     eval {
         my $arr = Win32::OLE::Variant->new(
             Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF(),
@@ -137,9 +139,9 @@ if (2==1) {
         $return = $objReg->EnumKey($hkey, $keyName, $arr);
         if (defined $return && $return == 0) {
             print 'return : '.$return."\n";
-            $subKeys = [ ];
             foreach my $item (in( $arr->Value )) {
                 #            next unless $item;
+                $subKeys = [] unless defined $subKeys;
                 push @$subKeys, "$item";
             }
         }
@@ -155,16 +157,17 @@ if (2==1) {
     print 'error message : '.Win32::OLE->LastError(0);
     print "\n";
 }
-$subKeys = [];
+$subKeys = undef;
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumValues($hkey, $keyName, $arr1, $arr2);
     if (defined $return && $return == 0) {
         print 'return : ' . $return . "\n";
-        $subKeys = [ ];
+
         foreach my $item (in( $arr1->Value )) {
             next unless $item;
+            $subKeys = [] unless defined $subKeys;
             push @$subKeys, $item;
         }
     }
@@ -199,15 +202,16 @@ foreach my $item ( in( $arr->Value ) ) {
 $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\";
 #    open(O, ">" . 'debug_' . time());
 #    print O 'avant eval' . "\n";
-$subKeys = [];
+$subKeys = undef;
 eval {
     my $arr = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumKey($hkey, $keyName, $arr);
     if (defined $return && $return == 0) {
         print 'return : ' . $return . "\n";
-        $subKeys = [ ];
+
         foreach my $item (in( $arr->Value )) {
             #            next unless $item;
+            $subKeys = [] unless defined $subKeys;
             push @$subKeys, "$item";
         }
     }
@@ -221,16 +225,17 @@ print 'EnumKey' . $keyName . "\n";
 print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
-$subKeys = [];
+$subKeys = undef;
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     $return = $objReg->EnumValues($hkey, $keyName, $arr1, $arr2);
     if (defined $return && $return == 0 && $arr1 && $arr2) {
         print 'return : ' . $return . "\n";
-        $subKeys = [ ];
+#        $subKeys = [ ];
         foreach my $item (in( $arr1->Value )) {
             next unless $item;
+            $subKeys = [] unless defined $subKeys;
             push @$subKeys, $item;
         }
     }
