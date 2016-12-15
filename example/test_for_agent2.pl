@@ -44,7 +44,7 @@ eval {
     print 'ProcessorNameString (unexisting keyName) : ' . $retretret . ' ' . sprintf($rrr) . "\n";
 };
 &$func if $@;
-print 'error message : ' . Win32::OLE->LastError(0);
+print 'GetStringValue error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
 # Do not use Die for this method
@@ -75,6 +75,7 @@ eval {
 &$func2 if $@;
 my $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
+print 'EnumKey ' . $keyName . "\n";
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
@@ -103,6 +104,7 @@ eval {
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
+print 'EnumValues ' . $keyName . "\n";
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
@@ -130,7 +132,8 @@ if (2==1) {
     };
     &$func2 if $@;
     $dd = Data::Dumper->new([ $subKeys ]);
-    print 'EnumKey'."\n";
+    print 'EnumKey ' . $keyName . "\n";
+
     print $dd->Dump;
     print 'error message : '.Win32::OLE->LastError(0);
     print "\n";
@@ -154,8 +157,9 @@ eval {
 };
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
-print 'EnumValues' . "\n";
+
 print $dd->Dump;
+print 'EnumValues ' . $keyName . "\n";
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
@@ -196,7 +200,7 @@ eval {
 };
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
-print 'EnumKey' . "\n";
+print 'EnumKey' . $keyName . "\n";
 print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
@@ -219,7 +223,7 @@ eval {
 };
 &$func2 if $@;
 $dd = Data::Dumper->new([$subKeys]);
-print 'EnumValues' . "\n";
+print 'EnumValues ' . $keyName . "\n";
 print $dd->Dump;
 print 'error message : ' . Win32::OLE->LastError(0);
 print "\n";
