@@ -47,13 +47,31 @@ eval {
 print 'GetStringValue error message : ' . Win32::OLE->LastError(0);
 print "\n";
 
-# Do not use Die for this method
+
+
 
 my $func2 = sub {
     print  'eval is fatal error !!!' . "\n";
 };
 my $return;
 my $subKeys;
+eval {
+    my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+    my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+
+    my $retretret = $objReg->EnumValues($Win32::Registry::HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
+        , $arr1, $arr2);
+    foreach my $item (in( $arr1->Value )) {
+        next unless $item;
+        push @$subKeys, $item;
+    }
+};
+&$func if $@;
+my $dd = Data::Dumper->new([$subKeys]);
+print $dd->Dump;
+print 'GetStringValue error message : ' . Win32::OLE->LastError(0);
+print "\n";
+
 my $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}";
 #    open(O, ">" . 'debug_' . time());
 #    print O 'avant eval' . "\n";
