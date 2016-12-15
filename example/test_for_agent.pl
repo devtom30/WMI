@@ -7,6 +7,7 @@ $Win32::OLE::Warn = 3;
 use Win32::OLE::Variant;
 use Win32::Registry;
 use Data::Dumper;
+use Data::Structure::Util qw( unbless );
 
 use TheWin32;
 
@@ -25,7 +26,7 @@ print 'service ok ';
 print "\n";
 
 my $objReg = $service->Get("StdRegProv");
-print Dumper($objReg);
+print Dumper(unbless $objReg);
 my $dd2 = Data::Dumper->new([$objReg]);
 print $dd2->Dump;
 
