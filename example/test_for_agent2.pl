@@ -149,6 +149,8 @@ $subKeys = undef;
 eval {
     my $arr1 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
     my $arr2 = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF()  , [1,1] );
+    print 'ref arr1 : ' . ref $arr1 . "\n";
+    print 'ref arr2 : ' . ref $arr2 . "\n";
     $return = $objReg->EnumValues($hkey, $keyName, $arr1, $arr2);
 #    my $err = sprintf(Win32::OLE->LastError);
 #    print '$err ' . $err . "\n";
