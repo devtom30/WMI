@@ -156,7 +156,7 @@ eval {
 #    print '$err ' . $err . "\n";
     my $sprintfError = sprintf("%s", Win32::OLE->LastError);
     print 'sprintfError : ' . $sprintfError . "\n;";
-    if (2==1 && defined $return && $return == 0) {
+    if (defined $return && $return == 0) {
         print 'return : ' . $return . "\n";
 
         foreach my $item (in( $arr1->Value )) {
