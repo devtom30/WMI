@@ -5,6 +5,7 @@ use warnings FATAL => 'all';
 use Win32::OLE qw/in/;
 $Win32::OLE::Warn = 3;
 use Win32::OLE::Variant;
+use Win32::OLE::NLS;
 use Win32::Registry;
 use Data::Dumper;
 use Data::Structure::Util qw( unbless );
