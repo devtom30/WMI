@@ -34,7 +34,7 @@ my $kv = "InstallDate";
 my $ret = $objReg->GetDWORDValue($Win32::Registry::HKEY_LOCAL_MACHINE, $kn, $kv, $res);
 print '$ret : ' . $ret . "\n";
 print '$res : ' . $res . "\n";
-if (defined $ret && $ret == 0 && $res) {
+if (defined $ret && $ret == 0) {
     my $v = $res->Date("dd MM yyyy");
     $v .= ' - '.$res->Date('yyyy/MM/dd');
     $v .= ' - '.$res->Date(Win32::OLE::NLS::DATE_LONGDATE());
