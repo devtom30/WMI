@@ -183,6 +183,7 @@ print Win32::OLE->LastError;
 print 'EnumValues ' . $keyName . "\n";
 print 'error message : ' . Win32::OLE->LastError();
 print "\n";
+exit;
 
 $keyName = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}\\Descriptions";
 if (2==1) {
