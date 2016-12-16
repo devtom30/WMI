@@ -35,6 +35,7 @@ my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 
 my $func2 = sub {
     my $str = shift;
+    $str = 'UNDEF' unless defined $str;
     print  'eval is fatal error !!! ' . $str ."\n";
 };
 
