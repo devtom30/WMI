@@ -49,3 +49,7 @@ my $result = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_I4(), 0);
 #        $result = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_BYREF() | Win32::OLE::Variant::VT_BSTR(), 0);
 my $value = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $kn, $kv, $result);
 print $value . "\n";
+
+$res = Win32::OLE::Variant->new(Win32::OLE::Variant::VT_DATE(), 0);
+$value = $objReg->GetStringValue($Win32::Registry::HKEY_LOCAL_MACHINE, $kn, $kv, $result);
+print $value . "\n";
