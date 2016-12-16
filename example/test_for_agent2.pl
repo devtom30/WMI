@@ -34,7 +34,8 @@ my $objReg = $service->Get("StdRegProv");
 my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 
 my $func2 = sub {
-    print  'eval is fatal error !!!' . "\n";
+    my $str = shift;
+    print  'eval is fatal error !!! ' . $str ."\n";
 };
 
 my $return;
@@ -175,7 +176,7 @@ eval {
     print "\n";
 
 };
-&$func2 if $@;
+&$func2('EnumValues ' . $keyname) if $@;
 $dd = Data::Dumper->new([$subKeys]);
 print $dd->Dump;
 print Win32::OLE->LastError;
