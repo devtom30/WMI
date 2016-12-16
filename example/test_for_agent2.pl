@@ -154,7 +154,8 @@ eval {
     $return = $objReg->EnumValues($hkey, $keyName, $arr1, $arr2);
 #    my $err = sprintf(Win32::OLE->LastError);
 #    print '$err ' . $err . "\n";
-
+    my $sprintfError = sprintf("%s", Win32::OLE->LastError);
+    print 'sprintfError : ' . $sprintfError . "\n;";
     if (2==1 && defined $return && $return == 0) {
         print 'return : ' . $return . "\n";
 
