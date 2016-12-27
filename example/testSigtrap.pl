@@ -1,13 +1,15 @@
 #!/usr/bin/perl
 use strict;
 #use warnings FATAL => 'all';
+use Data::Dumper;
 
 use sigtrap qw(handler errorHandler untrapped);
 
 
 sub errorHandler {
     print 'error !' . "\n";
-    warn;
+    print Dumper %SIG;
+    exit;
 };
 
 use Win32::OLE qw/in/;
@@ -49,6 +51,7 @@ my $arrValueTypes = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | 
 my $arrValueNames = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF() , [1,1] );
 my $return = $objReg->EnumValues($hkey, $keyName, $arrValueNames, $arrValueTypes);
     $types = [];
+print Dumper %SIG;
     foreach my $item (in( $arrValueTypes->Value )) {
         push @$types, sprintf $item;
     }
