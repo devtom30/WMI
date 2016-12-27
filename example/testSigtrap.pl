@@ -56,13 +56,7 @@ my $return = $objReg->EnumValues($hkey, $keyName, $arrValueNames, $arrValueTypes
         $values = { };
         foreach my $item (in( $arrValueNames->Value )) {
             my $valueName = sprintf $item;
-            $values->{$valueName} = _retrieveRemoteRegistryValueByType(
-                valueType => $types->[$i],
-                keyName   => $params{keyName},
-                valueName => $valueName,
-                objReg    => $params{objReg},
-                hkey      => $hkey
-            );
+
             $i++;
         }
     }
