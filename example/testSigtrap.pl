@@ -40,3 +40,30 @@ my $objReg = $service->Get("StdRegProv");
 
 my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 
+my $keyName = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\AddressBook';
+
+my $values;
+my $types;
+my $arrValueTypes = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF() , [1,1] );
+my $arrValueNames = Win32::OLE::Variant->new( Win32::OLE::Variant::VT_ARRAY() | Win32::OLE::Variant::VT_VARIANT() | Win32::OLE::Variant::VT_BYREF() , [1,1] );
+my $return = $objReg->EnumValues($hkey, $keyName, $arrValueNames, $arrValueTypes);
+    $types = [];
+    foreach my $item (in( $arrValueTypes->Value )) {
+        push @$types, sprintf $item;
+    }
+    if (scalar (@$types) > 0) {
+        my $i = 0;
+        $values = { };
+        foreach my $item (in( $arrValueNames->Value )) {
+            my $valueName = sprintf $item;
+            $values->{$valueName} = _retrieveRemoteRegistryValueByType(
+                valueType => $types->[$i],
+                keyName   => $params{keyName},
+                valueName => $valueName,
+                objReg    => $params{objReg},
+                hkey      => $hkey
+            );
+            $i++;
+        }
+    }
+
