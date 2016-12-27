@@ -7,6 +7,7 @@ use sigtrap qw(handler errorHandler untrapped);
 
 sub errorHandler {
     print 'error !' . "\n";
+    die;
 };
 
 use Win32::OLE qw/in/;
