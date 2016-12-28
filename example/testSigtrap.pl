@@ -8,8 +8,7 @@ use sigtrap qw(handler errorHandler untrapped);
 
 sub errorHandler {
     print 'error !' . "\n";
-    print Dumper %SIG;
-    exit;
+#    exit;
 };
 
 use Win32::OLE qw/in/;
