@@ -61,7 +61,7 @@ print Dumper %SIG;
         $values = { };
         foreach my $item (in( $arrValueNames->Value )) {
             my $valueName = sprintf $item;
-
+            print 'value named ' . $valueName . "\n";
             $i++;
         }
     }
