@@ -43,7 +43,8 @@ my $objReg = $service->Get("StdRegProv");
 
 my $hkey = $Win32::Registry::HKEY_LOCAL_MACHINE;
 
-my $keyName = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\AddressBook';
+#my $keyName = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\AddressBook';
+my $keyName = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\AMD Catalyst Install Manager';
 
 my $values;
 my $types;
